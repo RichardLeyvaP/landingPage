@@ -71,6 +71,7 @@ import AboutUsHome from "../components/AboutUsHome.vue"
 import CallToAction from "../components/CallToAction.vue"
 import WorkWithUs from "../components/CallToAction.vue"
 import MediaHome from "../components/MediaHome.vue"
+import axios from "axios";
 export default {
   components: {
     BranchesHome,
@@ -86,7 +87,7 @@ export default {
       curriculum: null,
       hover: false,
       cards: [
-        {
+        /*{
           icon: "mdi-school",
           title: 'Mall La Paloma',
           subtitle: 'Sucursal',
@@ -129,7 +130,7 @@ export default {
           phone_link: "https://wa.me/56957651503",
           image: 'salon_sillas.jpg', // Asume que esta es la imagen en la carpeta assets
 
-        },
+        },*/
 
       ],
 
@@ -190,6 +191,14 @@ export default {
     }
   },
   mounted() {
+    axios
+        .get('https://api2.simplifies.cl/api/business-branch-academy')
+        .then((response) => {          
+          //console.log(this.response)
+          this.cards = response.data.business;
+          console.log(this.cards);
+          //console.log(this.student)
+        });
     // Añadimos la propiedad hover a cada card dinámicamente
     this.cards = this.cards.map(card => ({ ...card, hover: false }));
     this.animateProgress();   

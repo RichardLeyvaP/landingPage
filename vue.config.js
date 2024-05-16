@@ -2,7 +2,7 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'http://127.0.0.1:8000',
+        target: 'https://api2.simplifies.cl',
         changeOrigin: true,
         pathRewrite: { '^/api': '' },
       },

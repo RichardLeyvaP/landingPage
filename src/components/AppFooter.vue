@@ -54,6 +54,8 @@
   </template>
   
   <script>
+import axios from "axios";
+
   export default {
     name: 'AppFooter',
 
@@ -62,7 +64,7 @@
       curriculum: null,
       hover: false,
       cards: [
-        {
+        /*{
           icon:"mdi-store",
           title: 'Mall La Paloma',
           subtitle: 'Sucursal',
@@ -105,13 +107,21 @@
           phone_link:"https://wa.me/56950499706",
           image: 'academia.jpg', // Asume que esta es la imagen en la carpeta assets
           
-        },
+        },*/
         
-      ],
-
-     
+      ],     
     };
   },
+  mounted() {
+    axios
+        .get('https://api2.simplifies.cl/api/business-branch-academy')
+        .then((response) => {          
+          //console.log(this.response)
+          this.cards = response.data.business;
+          console.log(this.cards);
+          //console.log(this.student)
+        });
+    },
   };
   </script>
   

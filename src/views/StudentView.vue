@@ -4,7 +4,7 @@
       <v-row>
         <v-col cols="2" class="d-flex" style="background-color: #ffffff;">
           <v-avatar class="mt-8 ml-8 mb-8 " size="160" elevation="3" color="grey-lighten-4">
-            <v-img src="" alt="image"></v-img>
+            <v-img :src="studentImageUrl" alt="image"></v-img>
           </v-avatar>
         </v-col>
 
@@ -12,13 +12,13 @@
 
           <v-list class="bg-transparent">
             <p class="text-h4">
-              {{ studend.name }}
+              {{ student.name }}
             </p>
             <p class="mt-2">
-              {{ studend.email }}
+              {{ student.email }}
             </p>
             <p class="mt-2">
-              {{ studend.phone }}
+              {{ student.phone }}
             </p>
           </v-list>
         </v-col>
@@ -109,7 +109,12 @@
 
               <v-divider></v-divider>
               <v-data-table v-model:search="search" :items="cursos" :headers="headers">
+                <template v-slot:item.course_image="{ item }">
 
+                  <v-avatar class="mr-5" elevation="3" color="grey-lighten-4">
+                    <v-img :src="'https://api2.simplifies.cl/api/images/'+item.course_image" alt="image"></v-img>
+                  </v-avatar>
+                  </template>
               </v-data-table>
             </v-card>
           </v-window-item>
@@ -127,8 +132,13 @@
               </v-card-title>
 
               <v-divider></v-divider>
-              <v-data-table v-model:search="search" :items="productos" :headers="headersProducts">
+              <v-data-table v-model:search="searchProduct" :items="productos" :headers="headersProducts">
+                <template v-slot:item.image_product="{ item }">
 
+              <v-avatar class="mr-5" elevation="3" color="grey-lighten-4">
+                <v-img :src="'https://api2.simplifies.cl/api/images/'+item.image_product" alt="image"></v-img>
+              </v-avatar>
+              </template>
               </v-data-table>
             </v-card>
           </v-window-item>
@@ -141,13 +151,20 @@
 
                 <v-spacer></v-spacer>
 
-                <v-text-field v-model="searchProduct" density="compact" label="Buscar" prepend-inner-icon="mdi-magnify"
+                <v-text-field v-model="searchPay" density="compact" label="Buscar" prepend-inner-icon="mdi-magnify"
                   variant="solo-filled" flat hide-details single-line></v-text-field>
               </v-card-title>
 
               <v-divider></v-divider>
-              <v-data-table v-model:search="search" :items="pagos" :headers="headersPay">
-
+              <v-data-table v-model:search="searchPay" :items="pagos" :headers="headersPay">
+                <template v-slot:item.details="{ item }">
+            <!-- Verifica si image_url cumple las condiciones -->
+            <!--<v-icon color="green" v-if="item.image_url && item.image_url !== 'image/default.png'" @click="openModal(item.image_url)">
+              mdi-eye
+            </v-icon>-->
+              <v-btn density="comfortable" icon="mdi-eye" color="green" v-if="item.details && item.details !== 'image/default.png'" @click="openModal(item.details)" variant="tonal"
+                  elevation="1" class="mr-1 mt-1 mb-1" title="Ver detalles"></v-btn>
+            </template>
               </v-data-table>
             </v-card>
           </v-window-item>
@@ -158,7 +175,20 @@
 
 
 
-
+    <v-dialog v-model="dialogPhoto" persistent max-width="600px">
+        <v-card>
+              <v-toolbar color="#F18254">
+                <span class="text-subtitle-2 ml-4"> Detalle del pago</span> <v-spacer></v-spacer>
+                <v-btn  @click="dialogPhoto = false">
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+              </v-toolbar>
+        
+          <v-card-text>
+            <v-img :src="selectedImageUrl" aspect-ratio="1.5"></v-img>
+          </v-card-text>
+        </v-card>
+    </v-dialog>
   </v-container>
 </template>
 
@@ -167,15 +197,21 @@ import axios from "axios";
 
 export default {
   name: 'StudentView',
-  data: () => ({
+  data: () => ({    
+    baseUrl: 'https://api2.simplifies.cl/api/images/',
     description_length: 70,
     selectedtab: 'one',
-    studend: { name: "Deylert Pérez Rivera", email: "deylert89@gmail.com", phone: "+56920258489" },
-    cantCourses: 2,
+    dialogPhoto: false,
+    selectedImageUrl: '',
+    //studend: { name: "Deylert Pérez Rivera", email: "deylert89@gmail.com", phone: "+56920258489" },
+    cantCourses: 0,
     cantPay: "52.000",
     statePay: "Retrasado",
     enabledStudend: false,
-
+    student: [],
+    cursos: [],
+    productos: [],
+    pagos: [],
     products: [
         {
             "id": 31,
@@ -225,29 +261,30 @@ export default {
     searchPay: '',
 
     headers: [
-      { title: 'Imagen', key: 'imagen', sortable: false },
-      { title: 'Nombre', key: 'nombre' },
-      { title: 'Precio de Matrícula', key: 'precioMatricula' },
-      { title: 'Precio Total', key: 'precioTotal' },
-      { title: 'Fecha de Inicio', key: 'fechaInicio' },
-      { title: 'Descripción', key: 'descripcion' },
-      { title: 'Cantidad de Horas', key: 'cantidadHoras' },
+      { title: 'Imagen', key: 'course_image', sortable: false },
+      { title: 'Nombre', key: 'name' },
+      { title: 'Precio de Matrícula', key: 'reservation_price' },
+      { title: 'Precio Total', key: 'price' },
+      { title: 'Fecha de Inicio', key: 'startDate' },
+      { title: 'Descripción', key: 'description' },
+      { title: 'Cantidad de Horas', key: 'duration' },
     ],
 
     headersProducts: [
-      { title: 'Imagen', key: 'imagen', sortable: false },
-      { title: 'Nombre', key: 'nombre' },
-      { title: 'Precio', key: 'precio' },
+      { title: 'Imagen', key: 'image_product', sortable: false },
+      { title: 'Nombre', key: 'name' },
+      { title: 'Curso', key: 'course' },
+      { title: 'Precio', key: 'price' },
     ],
 
     headersPay: [
-      { title: 'Curso', key: 'curso' },
-      { title: 'Fecha', key: 'fecha', sortable: false },
-      { title: 'Detalle', key: 'detalle' }
+      { title: 'Curso', key: 'name' },
+      { title: 'Fecha', key: 'data', sortable: false },
+      { title: 'Detalle', key: 'details' }
     ],
 
     tab: null,
-    cursos: [
+    /*cursos: [
       {
         imagen: "url_de_la_imagen_1",
         nombre: "Curso 1",
@@ -276,8 +313,8 @@ export default {
         cantidadHoras: "18 horas",
         imagen: "url_de_la_imagen_3"
       }
-    ],
-    pagos: [
+    ],*/
+    /*pagos: [
       {
         fecha: "01/05/2024",
         detalle: "Comprobante de transferencia 1",
@@ -293,8 +330,8 @@ export default {
         detalle: "Comprobante de transferencia 3",
         curso: "Curso 3"
       }
-    ],
-      productos: [
+    ],*/
+      /*productos: [
       {
         nombre: "Producto 1",
         precio: "$10.000 CLP",
@@ -310,7 +347,7 @@ export default {
         precio: "$20.000 CLP",
         imagen: "url_de_la_imagen_3"
       }
-    ],
+    ],*/
     //, Agrega más productos según sea necesario
 
 
@@ -318,6 +355,11 @@ export default {
     services: [
     ],
   }),
+  computed: {
+    studentImageUrl() {
+      return `https://api2.simplifies.cl/api/images/${this.student.student_image}`;
+    }
+  },
 
   mounted() {
     //this.getServices()
@@ -329,9 +371,21 @@ export default {
   },
 
   methods: {
-
+    openModal(imageUrl) {
+      
+      var img = new Image();
+      img.src = 'https://api2.simplifies.cl/api/images/' + imageUrl;
+      img.onload = () => {
+      this.selectedImageUrl = 'https://api2.simplifies.cl/api/images/' + imageUrl; 
+      };
+      img.onerror = () => {
+        this.selectedImageUrl = '';
+      };
+     // alert(this.selectedImageUrl)// Establece la imagen seleccionada
+      this.dialogPhoto = true; // Abre el modal
+    },
     init(code) {
-      alert(code);
+      //alert(code);
       axios
         .get('https://api2.simplifies.cl/api/service', {
           headers: {
@@ -342,6 +396,27 @@ export default {
         .then((response) => {
           this.services = response.data.services;
           console.log(this.services)
+        });        
+        //https://api2.simplifies.cl
+        //https://api2.simplifies.cl
+        /*let request = {
+            code: code
+          };*/
+        axios
+        .get('https://api2.simplifies.cl/api/student-code',{
+                    params: {
+                      code: code
+                    }
+                })
+        .then((response) => {          
+          //console.log(this.response)
+          this.student = response.data.student;
+          this.cursos = response.data.courses;
+          this.productos = response.data.products;
+          this.pagos = response.data.pagos;
+          this.cantCourses = this.cursos.length;
+          console.log(this.cursos.length());
+          //console.log(this.student)
         });
     },
 

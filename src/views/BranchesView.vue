@@ -47,6 +47,7 @@ import paloma from '@/assets/paloma.jpg';
 import bosquemar from '@/assets/bosquemar.jpg';
 import suc_new from '@/assets/suc_new.jpg';
 import academia from '@/assets/chapa.jpg';
+import axios from "axios";
 
 export default {
   name: 'BranchesView',
@@ -55,7 +56,7 @@ export default {
       curriculum: null,
       hover: false,
       cards: [
-        {
+        /*{
           icon:"mdi-store",
           title: 'Mall La Paloma',
           subtitle: 'Sucursal',
@@ -98,7 +99,7 @@ export default {
           phone_link:"https://wa.me/56950499706",
           image: academia, // Asume que esta es la imagen en la carpeta assets
           
-        },
+        },*/
         
       ],
     };
@@ -125,6 +126,14 @@ export default {
 
   },
   mounted() {
+    axios
+        .get('https://api2.simplifies.cl/api/business-branch-academy')
+        .then((response) => {          
+          //console.log(this.response)
+          this.cards = response.data.business;
+          console.log(this.cards);
+          //console.log(this.student)
+        });
     // Añadimos la propiedad hover a cada card dinámicamente
     this.cards = this.cards.map(card => ({ ...card, hover: false }));
   },
