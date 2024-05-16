@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/valid-v-slot -->
 <template>
   <v-container class="mb-12">
     <v-card class="mt-12 mb-4" elevation="6">
@@ -33,7 +34,7 @@
               </v-col>
               <v-col cols="12" md="6">
                 <v-chip color="red">
-                  No Habilitado
+                  {{ habilitado }}
                 </v-chip>
               </v-col>
             </v-row>
@@ -73,7 +74,7 @@
               </v-col>
               <v-col cols="12" md="6">
 
-                {{ cantPay }}
+                {{ formatNumber(cantPay) }}
 
               </v-col>
             </v-row>
@@ -115,6 +116,12 @@
                     <v-img :src="'https://api2.simplifies.cl/api/images/'+item.course_image" alt="image"></v-img>
                   </v-avatar>
                   </template>
+                  <template v-slot:item.price ="{ item }">
+                         {{ formatNumber(parseInt(item.price))}}
+                                    </template>
+                                    <template v-slot:item.reservation_price ="{ item }">
+                         {{ formatNumber(parseInt(item.reservation_price))}}
+                                    </template>
               </v-data-table>
             </v-card>
           </v-window-item>
@@ -139,6 +146,9 @@
                 <v-img :src="'https://api2.simplifies.cl/api/images/'+item.image_product" alt="image"></v-img>
               </v-avatar>
               </template>
+              <template v-slot:item.price ="{ item }">
+                         {{ formatNumber(parseInt(item.price))}}
+                                    </template>
               </v-data-table>
             </v-card>
           </v-window-item>
@@ -205,8 +215,9 @@ export default {
     selectedImageUrl: '',
     //studend: { name: "Deylert Pérez Rivera", email: "deylert89@gmail.com", phone: "+56920258489" },
     cantCourses: 0,
-    cantPay: "52.000",
-    statePay: "Retrasado",
+    habilitado: '',
+    cantPay: 0,
+    statePay: '',
     enabledStudend: false,
     student: [],
     cursos: [],
@@ -371,6 +382,26 @@ export default {
   },
 
   methods: {
+    formatNumber(value) {
+      // Si el valor es menor que 1000, devuelve el valor original sin formato
+  if (value < 1000) {
+    return value;
+  }
+
+  // Primero, redondea el valor a dos decimales
+  value = Math.round((value + Number.EPSILON) * 100) / 100;
+
+  // Separa la parte entera de la parte decimal
+  let parts = value.toString().split(".");
+  let integerPart = parts[0];
+  let decimalPart = parts.length > 1 ? "." + parts[1] : "";
+
+  // Agrega los separadores de miles
+  integerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+  // Combina la parte entera y la parte decimal
+  return integerPart + decimalPart;
+        },
     openModal(imageUrl) {
       
       var img = new Image();
@@ -415,7 +446,10 @@ export default {
           this.productos = response.data.products;
           this.pagos = response.data.pagos;
           this.cantCourses = this.cursos.length;
-          console.log(this.cursos.length());
+          this.habilitado = response.data.habilitado;
+          this.cantPay = response.data.payMount;
+          this.statePay = response.data.status;
+          //console.log(this.cursos.length());
           //console.log(this.student)
         });
     },
