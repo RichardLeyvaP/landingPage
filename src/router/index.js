@@ -26,6 +26,7 @@ const routes = [
   {
     path: '/student',
     name: 'student',
+    props: true,
     component: StudentView,
   },
   {

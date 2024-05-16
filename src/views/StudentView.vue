@@ -321,12 +321,17 @@ export default {
 
   mounted() {
     //this.getServices()
-    this.init()
+   // alert('Hola');
+    //console.log(this.$route.query.code);
+    //alert(this.$route.query.code);
+    
+    this.init(this.$route.query.code)
   },
 
   methods: {
 
-    init() {
+    init(code) {
+      alert(code);
       axios
         .get('https://api2.simplifies.cl/api/service', {
           headers: {
