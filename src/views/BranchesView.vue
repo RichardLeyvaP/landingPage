@@ -6,7 +6,7 @@
       <v-col cols="12" md="3" v-for="(card, index) in cards" style="padding: 4px;" :key="index">
         <v-card class="mx-auto my-4 hover-card" @mouseover="cardHover(index, true)" @mouseleave="cardHover(index, false)"
           :class="{ 'orange-background': card.hover }" elevation="6">
-          <v-parallax height="250" :src="card.image" class="white--text align-end"
+          <v-parallax height="250" :src="'https://api2.simplifies.cl/api/images/' + card.image" class="white--text align-end"
             :class="{ 'image-grow': card.hover }"></v-parallax>
 
           <v-list-item class="pt-4" two-line>
