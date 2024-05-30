@@ -56,15 +56,10 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-  scrollBehavior(to, from, savedPosition) {
-    // Verifica si la ruta tiene una posición guardada (por ejemplo, al usar los botones de adelante/atras del navegador)
-    if (savedPosition) {
-      return savedPosition;
-    } else {
-      // En cualquier otro caso, desplaza la vista al inicio de la página
-      return { top: 0 };
-    }
-  },
+});
+
+router.beforeEach((to, from, next) => {
+  next();
 });
 
 export default router;

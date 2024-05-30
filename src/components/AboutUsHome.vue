@@ -39,11 +39,7 @@ export default {
   methods: {
     initialize() {
   axios
-    .get('https://api2.simplifies.cl/api/course-show', {
-      params: {
-        business_id: this.business_id
-      }
-    })
+    .get('https://api2.simplifies.cl/api/course')
     .then((response) => {
       this.results = response.data.courses;
     });

@@ -26,7 +26,7 @@
 
       <v-col cols="5" class="overflow-visible">
         <transition name="slide">
-          <v-img src="@/assets/phone.png"></v-img>
+          <v-img src="@/assets/phone.png" class="big-image"></v-img>
         </transition>
       </v-col>
     </v-row>

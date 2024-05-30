@@ -260,11 +260,7 @@ export default {
     },
     init() {
       axios
-        .get('https://api2.simplifies.cl/api/course-show', {
-          params: {
-            business_id: 1
-          }
-        })
+        .get('https://api2.simplifies.cl/api/course')
         .then((response) => {
           this.courseData = response.data.courses;
           console.log("estos son los cursos")
