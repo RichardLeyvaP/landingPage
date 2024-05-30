@@ -6,6 +6,7 @@
 
 // Plugins
 import { registerPlugins } from '@/plugins'
+import './assets/preloader.css' // Asegúrate de importar el CSS del preloader aquí
 
 // Components
 import App from './App.vue'
