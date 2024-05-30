@@ -43,10 +43,10 @@
 </template>
 <script>
 
-import paloma from '@/assets/paloma.jpg';
+/*import paloma from '@/assets/paloma.jpg';
 import bosquemar from '@/assets/bosquemar.jpg';
 import suc_new from '@/assets/suc_new.jpg';
-import academia from '@/assets/chapa.jpg';
+import academia from '@/assets/chapa.jpg';*/
 import axios from "axios";
 
 export default {
