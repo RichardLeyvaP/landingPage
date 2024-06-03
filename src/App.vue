@@ -1,7 +1,6 @@
 <template>
   <v-app style="background-color: #EFEBE9;">
     <v-app-bar app color="grey-darken-4" dark>
-      <!-- Botón de menú para móviles -->
       <v-app-bar-nav-icon @click="drawer = !drawer" class="d-md-none"></v-app-bar-nav-icon>
       <v-toolbar-title>
         <v-img src="@/assets/logo.png" contain alt="Logo de la barbería"></v-img>
@@ -9,7 +8,6 @@
 
       <v-spacer></v-spacer>
 
-      <!-- Menú de navegación para pantallas grandes -->
       <v-btn text to="/" prepend-icon="mdi-home" class="text-capitalize d-none d-md-flex">Inicio</v-btn>
       <v-btn text href="https://reservasbh.simplifies.cl" prepend-icon="mdi-calendar" class="text-capitalize d-none d-md-flex">Reserva</v-btn>
       <v-btn text to="/servicios" prepend-icon="mdi-format-list-bulleted-triangle" class="text-capitalize d-none d-md-flex">Servicios</v-btn>
@@ -19,12 +17,12 @@
 
       <v-menu class="d-none d-md-flex">
         <template v-slot:activator="{ props }">
-          <v-btn class="text-capitalize" prepend-icon="mdi-school" text v-bind="props">
+          <v-btn class="d-none d-md-flex" prepend-icon="mdi-school" text v-bind="props">
             Cursos
           </v-btn>
         </template>
         <v-list>
-          <v-list-item to="/cursos" v-for="(item, index) in courseData" :key="index" :value="index">
+          <v-list-item to="/cursos" v-for="(item, index) in courseData" :key="index">
             <v-list-item-title>{{ item.name }}</v-list-item-title>
           </v-list-item>
         </v-list>
@@ -32,17 +30,13 @@
 
       <v-spacer></v-spacer>
 
-      <!-- Iconos de Redes Sociales -->
-      <v-btn icon density="comfortable" class="ml-2" href="https://www.instagram.com/barberiahernandeztv/"
-             target="_blank">
+      <v-btn icon density="comfortable" class="ml-2" href="https://www.instagram.com/barberiahernandeztv/" target="_blank">
         <v-icon>mdi-instagram</v-icon>
       </v-btn>
-      <v-btn bg-color="#FFFFFF00" icon density="comfortable"
-             href="https://www.facebook.com/profile.php?id=100065259200120" target="_blank">
+      <v-btn bg-color="#FFFFFF00" icon density="comfortable" href="https://www.facebook.com/profile.php?id=100065259200120" target="_blank">
         <v-icon>mdi-facebook</v-icon>
       </v-btn>
-      <v-btn icon density="comfortable" class="ml-2" href="https://www.youtube.com/channel/UCRVTESNlCnAS45J4DEBi7tQ"
-             target="_blank">
+      <v-btn icon density="comfortable" class="ml-2" href="https://www.youtube.com/channel/UCRVTESNlCnAS45J4DEBi7tQ" target="_blank">
         <v-icon>mdi-youtube</v-icon>
       </v-btn>
       <v-btn icon density="comfortable" class="ml-2" href="https://www.tiktok.com/@barberiahernandeztv" target="_blank">
@@ -79,44 +73,19 @@
           <v-list-item-title>Tienda online</v-list-item-title>
         </v-list-item>
 
-        <!-- Cursos dentro del Drawer -->
-        <v-subheader>Cursos</v-subheader>
+       <!-- Cursos dentro del Drawer -->
+       <v-subheader>Cursos</v-subheader>
         <v-list-item to="/cursos" v-for="(item, index) in courseData" :key="index" :value="index">
           <v-list-item-title>{{ item.name }}</v-list-item-title>
         </v-list-item>
       </v-list>
-
-      <!-- Iconos de Redes Sociales en el Drawer -->
-      <v-divider></v-divider>
-      <v-list-item>
-        <!-- Iconos de Redes Sociales -->
-        <v-btn icon density="comfortable" class="ml-2" href="https://www.instagram.com/barberiahernandeztv/"
-            target="_blank">
-            <v-icon>mdi-instagram</v-icon>
-          </v-btn>
-          <v-btn bg-color="#FFFFFF00" icon density="comfortable" class="ml-2"
-            href="https://www.facebook.com/profile.php?id=100065259200120" target="_blank">
-            <v-icon>mdi-facebook</v-icon>
-          </v-btn>
-          <v-btn icon density="comfortable" class="ml-2" href="https://www.youtube.com/channel/UCRVTESNlCnAS45J4DEBi7tQ"
-            target="_blank">
-            <v-icon>mdi-youtube</v-icon>
-          </v-btn>
-          <v-btn icon density="comfortable" class="ml-2" href="https://www.tiktok.com/@barberiahernandeztv" target="_blank">
-          <v-icon>
-            <img src="@/assets/logo-tiktok.svg" alt="TikTok Icon" style="width: 20px; height: 20px;">
-          </v-icon>
-        </v-btn>
-      </v-list-item>
     </v-navigation-drawer>
 
     <br>
     <br>
 
-    <!-- Área donde se renderizarán los componentes de tus rutas -->
     <router-view></router-view>
 
-    <!-- Footer al final -->
     <AppFooter />
   </v-app>
 </template>
@@ -129,6 +98,7 @@ export default {
   data: () => ({
     drawer: false,
     courseData: [],
+    isCoursesOpen: false,
   }),
   components: {
     AppFooter
@@ -138,14 +108,7 @@ export default {
       .get('https://api2.simplifies.cl/api/course')
       .then((response) => {
         this.courseData = response.data.courses;
-        console.log("estos son los cursos")
-        console.log(this.results)
       });
-  },
-  methods: {
-    goToHome() {
-      this.$router.push({ name: 'home', hash: '#about_us' })
-    },
   },
 };
 </script>
