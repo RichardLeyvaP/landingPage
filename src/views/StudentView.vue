@@ -33,7 +33,7 @@
                 <strong> Habilitado</strong>
               </v-col>
               <v-col cols="12" md="6">
-                <v-chip color="red">
+                <v-chip :color="habilitado === 'Habilitado' ? 'green' : 'red'">
                   {{ habilitado }}
                 </v-chip>
               </v-col>
