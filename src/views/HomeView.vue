@@ -1,53 +1,52 @@
 <template>
   <v-row>
-    <v-col cols="12" sm="12" md="12">
-      <v-carousel class="mt-4" style="background-color: black;" cycle height="560px" progress="amber-darken-1"
-        @input="handleUpdate" show-arrows="hover" hide-delimiter-background>
-        <!-- Diapositiva 1 -->
+  <v-col cols="12">
+    <v-carousel
+      class="mt-4"
+      style="background-color: black;"
+      cycle
+      height="100vh"
+      progress="amber-darken-1"
+      @input="handleUpdate"
+      show-arrows="hover"
+      hide-delimiter-background
+    >
+      <!-- Diapositiva 1 -->
+      <v-carousel-item transition="scale-transition" origin="center">
+        <v-img
+          transition="scale-transition"
+          src="@/assets/b1.png"
+          gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+          height="100%"
+          width="100%"
+          cover
+        ></v-img>
+      </v-carousel-item>
 
-        <v-carousel-item transition="scale-transition" origin="center">
+      <!-- Diapositiva 2 -->
+      <v-carousel-item transition="scale-transition">
+        <v-img
+          src="@/assets/b2.png"
+          gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+          height="100%"
+          width="100%"
+          cover
+        ></v-img>
+      </v-carousel-item>
 
-<v-img transition="scale-transition" src="@/assets/b1.png"
-  gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)">
-    <!--  <transition name="fade">
-<v-row>
-      <v-col cols="12" md="4"></v-col>
-      <v-col cols="12" md="4">
-        <v-card class="mx-auto mt-12" color="transparent" height="400" image="@/assets/card2.png"
-          max-width="420"></v-card>
-      </v-col>
-      <v-col cols="12" md="4"></v-col>
-    </v-row>
-  </transition>--> 
-</v-img>
-</v-carousel-item>
-<v-carousel-item transition="scale-transition">
-<v-img src="@/assets/b2.png" gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)">
-<!--   <transition name="fade">
-    <v-row>
-      <v-col cols="12" md="4"></v-col>
-      <v-col cols="12" md="4">
-        <v-card class="mx-auto mt-12" color="transparent" height="450" image="@/assets/card1.png"
-          max-width="400"></v-card>
-      </v-col>
-      <v-col cols="12" md="4"></v-col>
-    </v-row>
-  </transition>--> 
-</v-img>
-</v-carousel-item>
-<v-carousel-item transition="scale-transition">
-
-<v-img src="@/assets/b3.png" gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)">
-  <transition name="fade">
-
-  </transition>
-</v-img>
-</v-carousel-item>
-
-        <!-- Repetir para las diapositivas 2 y 3 -->
-      </v-carousel>
-    </v-col>
-  </v-row>
+      <!-- Diapositiva 3 -->
+      <v-carousel-item transition="scale-transition">
+        <v-img
+          src="@/assets/b3.png"
+          gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+          height="100%"
+          width="100%"
+          cover
+        ></v-img>
+      </v-carousel-item>
+    </v-carousel>
+  </v-col>
+</v-row>
 
   <!---->
 

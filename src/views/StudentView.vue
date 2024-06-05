@@ -96,20 +96,19 @@
         <v-window v-model="selectedtab">
           <v-window-item value="one">
             <v-card flat>
-              <v-card-title class="d-flex align-center pe-2">
-
+              <v-card-title class="d-flex align-center pe-2 flex-wrap">
                 
-    <span class="text-subtitle-1"><v-icon icon="mdi-book" class="text-blue"></v-icon> &nbsp; Listado de Cursos Matriculados</span>
+    <span class="text-subtitle-1 d-flex align-center"><v-icon icon="mdi-book" class="text-blue"></v-icon> &nbsp; Listado de Cursos Matriculados</span>
 
       <v-spacer></v-spacer>
                 <v-spacer></v-spacer>
 
                 <v-text-field v-model="search" density="compact" label="Buscar" prepend-inner-icon="mdi-magnify"
-                  variant="solo-filled" flat hide-details single-line></v-text-field>
+                  variant="solo-filled" flat hide-details single-line class="search-field"></v-text-field>
               </v-card-title>
 
               <v-divider></v-divider>
-              <v-data-table v-model:search="search" :items="cursos" :headers="headers">
+              <v-data-table v-model:search="search" :items="cursos" :headers="headers" class="mobile-friendly-table" :items-per-page-text="'Elementos por páginas'" no-results-text="No hay datos disponibles" no-data-text="No hay datos disponibles">
                 <template v-slot:item.course_image="{ item }">
 
                   <v-avatar class="mr-5" elevation="3" color="grey-lighten-4">
@@ -128,18 +127,18 @@
 
           <v-window-item value="two">
             <v-card flat>
-              <v-card-title class="d-flex align-center pe-2">
+              <v-card-title class="d-flex align-center pe-2 flex-wrap">
 
-                <span class="text-subtitle-1"><v-icon icon="mdi-tag" class="text-amber"></v-icon> &nbsp; Listado de Productos asignados</span>
+                <span class="text-subtitle-1 d-flex align-center"><v-icon icon="mdi-tag" class="text-amber"></v-icon> &nbsp; Listado de Productos asignados</span>
 
                 <v-spacer></v-spacer>
 
                 <v-text-field v-model="searchProduct" density="compact" label="Buscar" prepend-inner-icon="mdi-magnify"
-                  variant="solo-filled" flat hide-details single-line></v-text-field>
+                  variant="solo-filled" flat hide-details single-line class="search-field"></v-text-field>
               </v-card-title>
 
               <v-divider></v-divider>
-              <v-data-table v-model:search="searchProduct" :items="productos" :headers="headersProducts">
+              <v-data-table v-model:search="searchProduct" :items="productos" :headers="headersProducts" :items-per-page-text="'Elementos por páginas'" no-results-text="No hay datos disponibles" no-data-text="No hay datos disponibles" class="mobile-friendly-table">
                 <template v-slot:item.image_product="{ item }">
 
               <v-avatar class="mr-5" elevation="3" color="grey-lighten-4">
@@ -155,18 +154,18 @@
 
           <v-window-item value="three">
             <v-card flat>
-              <v-card-title class="d-flex align-center pe-2">
+              <v-card-title class="d-flex align-center pe-2 flex-wrap">
 
-                <span class="text-subtitle-1"><v-icon icon="mdi-cash" class="text-green"></v-icon> &nbsp; Listado de Pagos Realizados</span>
+                <span class="text-subtitle-1 d-flex align-center"><v-icon icon="mdi-cash" class="text-green"></v-icon> &nbsp; Listado de Pagos Realizados</span>
 
                 <v-spacer></v-spacer>
 
                 <v-text-field v-model="searchPay" density="compact" label="Buscar" prepend-inner-icon="mdi-magnify"
-                  variant="solo-filled" flat hide-details single-line></v-text-field>
+                  variant="solo-filled" flat hide-details single-line class="search-field"></v-text-field>
               </v-card-title>
 
               <v-divider></v-divider>
-              <v-data-table v-model:search="searchPay" :items="pagos" :headers="headersPay">
+              <v-data-table v-model:search="searchPay" :items="pagos" :headers="headersPay" :items-per-page-text="'Elementos por páginas'" no-results-text="No hay datos disponibles" no-data-text="No hay datos disponibles" class="mobile-friendly-table">
                 <template v-slot:item.details="{ item }">
             <!-- Verifica si image_url cumple las condiciones -->
             <!--<v-icon color="green" v-if="item.image_url && item.image_url !== 'image/default.png'" @click="openModal(item.image_url)">
@@ -223,50 +222,6 @@ export default {
     cursos: [],
     productos: [],
     pagos: [],
-    products: [
-        {
-            "id": 31,
-            "product_exit": 18,
-            "name": "Cocacola (Almacén:Av. los notros)",
-            "image_product": "products/21.png"
-        },
-        {
-            "id": 39,
-            "product_exit": 10,
-            "name": "Wax orange (Almacén:Av. los notros)",
-            "image_product": "products/30.png"
-        },
-        {
-            "id": 40,
-            "product_exit": 2,
-            "name": "Black mask (Almacén:Av. los notros)",
-            "image_product": "products/25.png"
-        },
-        {
-            "id": 41,
-            "product_exit": 6,
-            "name": "POWDER (Almacén:Av. los notros)",
-            "image_product": "products/26.png"
-        },
-        {
-            "id": 42,
-            "product_exit": 10,
-            "name": "Creative wax (Almacén:Av. los notros)",
-            "image_product": "products/27.png"
-        },
-        {
-            "id": 43,
-            "product_exit": 10,
-            "name": "Hair espray (Almacén:Av. los notros)",
-            "image_product": "products/28.png"
-        },
-        {
-            "id": 44,
-            "product_exit": 10,
-            "name": "Wax quicksilver (Almacén:Av. los notros)",
-            "image_product": "products/29.png"
-  }],
-
     search: '',
     searchProduct: '',
     searchPay: '',
@@ -295,74 +250,6 @@ export default {
     ],
 
     tab: null,
-    /*cursos: [
-      {
-        imagen: "url_de_la_imagen_1",
-        nombre: "Curso 1",
-        precioMatricula: "$50.000 CLP",
-        precioTotal: "$250.000 CLP",
-        fechaInicio: "01/06/2024",
-        descripcion: "Descripción del curso 1",
-        cantidadHoras: "20 horas",
-
-      },
-      {
-        nombre: "Curso 2",
-        precioMatricula: "$75.000 CLP",
-        precioTotal: "$300.000 CLP",
-        fechaInicio: "15/06/2024",
-        descripcion: "Descripción del curso 2",
-        cantidadHoras: "25 horas",
-        imagen: "url_de_la_imagen_2"
-      },
-      {
-        nombre: "Curso 3",
-        precioMatricula: "$60.000 CLP",
-        precioTotal: "$350.000 CLP",
-        fechaInicio: "01/07/2024",
-        descripcion: "Descripción del curso 3",
-        cantidadHoras: "18 horas",
-        imagen: "url_de_la_imagen_3"
-      }
-    ],*/
-    /*pagos: [
-      {
-        fecha: "01/05/2024",
-        detalle: "Comprobante de transferencia 1",
-        curso: "Curso 1" // Aquí agregamos la propiedad 'curso' que indica a qué curso pertenece el pago
-      },
-      {
-        fecha: "05/05/2024",
-        detalle: "Comprobante de transferencia 2",
-        curso: "Curso 2"
-      },
-      {
-        fecha: "10/05/2024",
-        detalle: "Comprobante de transferencia 3",
-        curso: "Curso 3"
-      }
-    ],*/
-      /*productos: [
-      {
-        nombre: "Producto 1",
-        precio: "$10.000 CLP",
-        imagen: "url_de_la_imagen_1"
-      },
-      {
-        nombre: "Producto 2",
-        precio: "$15.000 CLP",
-        imagen: "url_de_la_imagen_2"
-      },
-      {
-        nombre: "Producto 3",
-        precio: "$20.000 CLP",
-        imagen: "url_de_la_imagen_3"
-      }
-    ],*/
-    //, Agrega más productos según sea necesario
-
-
-
     services: [
     ],
   }),
@@ -461,3 +348,13 @@ export default {
   }
 };
 </script>
+<style>
+@media (max-width: 600px) {
+  .search-field {
+    width: 100%;
+  }
+  .mobile-friendly-table .v-data-table__wrapper {
+    overflow-x: auto;
+  }
+}
+</style>
