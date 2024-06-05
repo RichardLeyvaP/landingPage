@@ -14,34 +14,28 @@
       <!-- Diapositiva 1 -->
       <v-carousel-item transition="scale-transition" origin="center">
         <v-img
+          class="carousel-img"
           transition="scale-transition"
           src="@/assets/b1.png"
           gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-          height="100%"
-          width="100%"
-          cover
         ></v-img>
       </v-carousel-item>
 
       <!-- Diapositiva 2 -->
       <v-carousel-item transition="scale-transition">
         <v-img
+          class="carousel-img"
           src="@/assets/b2.png"
           gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-          height="100%"
-          width="100%"
-          cover
         ></v-img>
       </v-carousel-item>
 
       <!-- Diapositiva 3 -->
       <v-carousel-item transition="scale-transition">
         <v-img
+          class="carousel-img"
           src="@/assets/b3.png"
           gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-          height="100%"
-          width="100%"
-          cover
         ></v-img>
       </v-carousel-item>
     </v-carousel>
@@ -241,5 +235,11 @@ export default {
   font-size: var(--v-btn-size);
   min-width: 64px;
   /* padding: 0 16px; */
+}
+.carousel-img {
+  height: calc(100vw - 2px); /* Ajusta esta medida según tus necesidades */
+  width: calc(100vw - 2px);  /* Ajusta esta medida según tus necesidades */
+  object-fit: cover;
+  margin: 2px;  /* Ajusta esta medida según tus necesidades */
 }
 </style>
