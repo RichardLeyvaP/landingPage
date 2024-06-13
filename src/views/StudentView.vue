@@ -2,87 +2,49 @@
 <template>
   <v-container class="mb-12">
     <v-card class="mt-12 mb-4" elevation="6">
-      <v-row>
-        <v-col cols="2" class="d-flex" style="background-color: #ffffff;">
-          <v-avatar class="mt-8 ml-8 mb-8 " size="160" elevation="3" color="grey-lighten-4">
-            <v-img :src="studentImageUrl" alt="image"></v-img>
-          </v-avatar>
-        </v-col>
+  <v-row>
+    <v-col cols="12" md="2" class="d-flex justify-center" style="background-color: #ffffff;">
+      <v-avatar class="mt-4 mb-4" size="120" elevation="3" color="grey-lighten-4">
+        <v-img :src="studentImageUrl" alt="image"></v-img>
+      </v-avatar>
+    </v-col>
 
-        <v-col cols="6" class="pt-10 pl-8" style="background-color: #ffffff;">
+    <v-col cols="12" md="6" class="pt-4 pl-4 pr-4" style="background-color: #ffffff;">
+      <v-list class="bg-transparent">
+        <p class="text-h4">{{ student.name }}</p>
+        <p class="mt-2">{{ student.email }}</p>
+        <p class="mt-2">{{ student.phone }}</p>
+      </v-list>
+    </v-col>
 
-          <v-list class="bg-transparent">
-            <p class="text-h4">
-              {{ student.name }}
-            </p>
-            <p class="mt-2">
-              {{ student.email }}
-            </p>
-            <p class="mt-2">
-              {{ student.phone }}
-            </p>
-          </v-list>
-        </v-col>
-        <v-divider vertical class="mt-10 mb-10"></v-divider>
-        <v-col cols="4" class="mt-8 " style="background-color: #ffffff;">
+    <v-divider class="mt-4 mb-4 d-none d-md-block" vertical></v-divider>
 
-
-          <p>
-            <v-row>
-              <v-col cols="12" md="6">
-                <strong> Habilitado</strong>
-              </v-col>
-              <v-col cols="12" md="6">
-                <v-chip :color="habilitado === 'Habilitado' ? 'green' : 'red'">
-                  {{ habilitado }}
-                </v-chip>
-              </v-col>
-            </v-row>
-
-          </p>
-          <p>
-            <v-row>
-              <v-col cols="12" md="6">
-                <strong> Cantidad de Cursos</strong>
-              </v-col>
-              <v-col cols="12" md="6">
-
-                {{ cantCourses }}
-
-              </v-col>
-            </v-row>
-
-          </p>
-          <p class="mt-2">
-            <v-row>
-              <v-col cols="12" md="6">
-                <strong> Estado de los Pagos</strong>
-              </v-col>
-              <v-col cols="12" md="6">
-
-                {{ statePay }}
-
-              </v-col>
-            </v-row>
-
-          </p>
-          <p class="mt-2">
-
-            <v-row>
-              <v-col cols="12" md="6">
-                <strong> Monto a Pagar</strong>
-              </v-col>
-              <v-col cols="12" md="6">
-
-                {{ formatNumber(cantPay) }}
-
-              </v-col>
-            </v-row>
-          </p>
-
+    <v-col cols="12" md="4" class="mt-4 pl-4 pr-4" style="background-color: #ffffff;">
+      <v-row class="mb-2">
+        <v-col cols="6"><strong>Habilitado</strong></v-col>
+        <v-col cols="6">
+          <v-chip :color="habilitado === 'Habilitado' ? 'green' : 'red'">{{ habilitado }}</v-chip>
         </v-col>
       </v-row>
-    </v-card>
+
+      <v-row class="mb-2">
+        <v-col cols="6"><strong>Cantidad de Cursos</strong></v-col>
+        <v-col cols="6">{{ cantCourses }}</v-col>
+      </v-row>
+
+      <v-row class="mb-2">
+        <v-col cols="6"><strong>Estado de los Pagos</strong></v-col>
+        <v-col cols="6">{{ statePay }}</v-col>
+      </v-row>
+
+      <v-row class="mb-2">
+        <v-col cols="6"><strong>Monto a Pagar</strong></v-col>
+        <v-col cols="6">{{ formatNumber(cantPay) }}</v-col>
+      </v-row>
+    </v-col>
+  </v-row>
+</v-card>
+
     <v-card class="mt-2 mb-6" elevation="6">
 
 
