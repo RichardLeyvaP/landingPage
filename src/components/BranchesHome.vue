@@ -33,7 +33,7 @@
           <!-- Acciones de la Tarjeta -->
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="brown-darken-4" href="https://reservasbh.simplifies.cl" text >Reservar</v-btn>
+            <v-btn v-if="card.type === 'Branch'" :href="getReservationLink(card.id, card.business_id)" color="brown-darken-4" text>Reservar</v-btn>
             <v-spacer></v-spacer>
           </v-card-actions>
         </v-card>
@@ -54,53 +54,7 @@ export default {
     return {
       curriculum: null,
       hover: false,
-      cards: [
-        /*{
-          icon:"mdi-store",
-          title: 'Mall La Paloma',
-          subtitle: 'Sucursal',
-          phone:"+56 9 5765 1503",
-          location: 'Volcán Puntiagudo 100',
-          location_link:"https://maps.app.goo.gl/hu86KEcrUAFpr9b37",
-          phone_link:"https://wa.me/56957651503",
-
-          image: paloma, // Asume que esta es la imagen en la carpeta assets
-        },
-        {
-          icon:"mdi-store",
-          title: 'Bosquemar',
-          subtitle: 'Sucursal',
-          phone:"+56 9 5341 0055",
-          location: 'Av. Los Notros 1280',
-          location_link:"https://maps.app.goo.gl/yk2AX4zit1Zw1CvLA",
-          phone_link:"https://wa.me/56953410055",
-          image: bosquemar, // Asume que esta es la imagen en la carpeta assets
-         
-        },
-        {
-          icon:"mdi-store",
-          title: 'Proximamente!',
-          subtitle: 'Nueva Sucursal',
-          phone:"+56 9 5765 1503",
-          location: 'Volcán Puntiagudo 100',
-          location_link:"https://maps.app.goo.gl/hu86KEcrUAFpr9b37",
-          phone_link:"https://wa.me/56957651503",
-          image: suc_new, // Asume que esta es la imagen en la carpeta assets
-      
-        },
-        {
-          icon:"mdi-school",
-          title: 'Academia Hernández',
-          subtitle: 'Academia',
-          phone:"+56 9 5049 9706",
-          location: 'Guillermo Gallardo 310',
-          location_link:"https://maps.app.goo.gl/NKXeN7YwAX1e2s8C9",
-          phone_link:"https://wa.me/56950499706",
-          image: academia, // Asume que esta es la imagen en la carpeta assets
-          
-        },*/
-        
-      ],
+      cards: [],
     };
   },
   methods: {
@@ -111,6 +65,10 @@ export default {
  
     return require('@/assets/' + image  + `?timestamp=${uniqueParam}`)
   },
+
+  getReservationLink(cardId, business_id) {
+      return `https://reservasbh.simplifies.cl/?id=${cardId}&business=${business_id}`;
+    },
 
   
     submitForm() {
