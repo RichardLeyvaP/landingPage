@@ -237,9 +237,14 @@ export default {
   /* padding: 0 16px; */
 }
 .carousel-img {
-  height: calc(100vw - 2px); /* Ajusta esta medida según tus necesidades */
-  width: calc(100vw - 2px);  /* Ajusta esta medida según tus necesidades */
   object-fit: cover;
+  width: 100%;
+  height: 100%;
   margin: 2px;  /* Ajusta esta medida según tus necesidades */
+}
+@media (max-width: 600px) {
+  .mobile-carousel {
+    height: 100vh !important; /* Ajusta esta medida según tus necesidades */
+  }
 }
 </style>
