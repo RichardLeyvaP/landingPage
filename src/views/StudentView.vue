@@ -69,7 +69,7 @@
                 <v-divider></v-divider>
                 <v-data-table v-model:search="search" :items="cursos" :headers="headers" class="mobile-friendly-table"
                   :items-per-page-text="'Elementos por páginas'" no-results-text="No hay datos disponibles"
-                  no-data-text="No hay datos disponibles">
+                  no-data-text="No hay datos disponibles" :loading="loadingCourse" loading-text="Cargando datos...">
                   <template v-slot:item.course_image="{ item }">
                     <v-avatar class="mr-5" elevation="3" color="grey-lighten-4">
                       <v-img :src="'https://api2.simplifies.cl/api/images/' + item.course_image" alt="image"></v-img>
@@ -100,7 +100,7 @@
                 <v-divider></v-divider>
                 <v-data-table v-model:search="searchProduct" :items="productos" :headers="headersProducts"
                   :items-per-page-text="'Elementos por páginas'" no-results-text="No hay datos disponibles"
-                  no-data-text="No hay datos disponibles" class="mobile-friendly-table">
+                  no-data-text="No hay datos disponibles" class="mobile-friendly-table" :loading="loadingProduct" loading-text="Cargando datos...">
                   <template v-slot:item.image_product="{ item }">
                     <v-avatar class="mr-5" elevation="3" color="grey-lighten-4">
                       <v-img :src="'https://api2.simplifies.cl/api/images/' + item.image_product" alt="image"></v-img>
@@ -127,7 +127,7 @@
                 <v-divider></v-divider>
                 <v-data-table v-model:search="searchPay" :items="pagos" :headers="headersPay"
                   :items-per-page-text="'Elementos por páginas'" no-results-text="No hay datos disponibles"
-                  no-data-text="No hay datos disponibles" class="mobile-friendly-table">
+                  no-data-text="No hay datos disponibles" class="mobile-friendly-table" :loading="loadingPayCourse" loading-text="Cargando datos...">
                   <template v-slot:item.details="{ item }">
                     <v-btn density="comfortable" icon="mdi-eye" color="green"
                       v-if="item.details && item.details !== 'image/default.png'" @click="openModal(item.details)"
@@ -157,7 +157,7 @@
             <v-text-field v-model="search" density="compact" label="Buscar" prepend-inner-icon="mdi-magnify" variant="solo-filled" flat hide-details single-line class="search-field"></v-text-field>
           </v-card-title>
           <v-divider></v-divider>
-          <v-data-table v-model:search="search" :items="cursos" :headers="headers" class="mobile-friendly-table" :items-per-page-text="'Elementos por página'" no-results-text="No hay datos disponibles" no-data-text="No hay datos disponibles">
+          <v-data-table v-model:search="search" :items="cursos" :headers="headers" class="mobile-friendly-table" :items-per-page-text="'Elementos por página'" no-results-text="No hay datos disponibles" no-data-text="No hay datos disponibles" :loading="loadingCourse" loading-text="Cargando datos...">
             <!-- Aquí van los slots para personalizar las columnas -->
             <template v-slot:item.course_image="{ item }">
               <v-avatar class="mr-5" elevation="3" color="grey lighten-4">
@@ -190,7 +190,7 @@
             <v-text-field v-model="searchProduct" density="compact" label="Buscar" prepend-inner-icon="mdi-magnify" variant="solo-filled" flat hide-details single-line class="search-field"></v-text-field>
           </v-card-title>
           <v-divider></v-divider>
-          <v-data-table v-model:search="searchProduct" :items="productos" :headers="headersProducts" :items-per-page-text="'Elementos por página'" no-results-text="No hay datos disponibles" no-data-text="No hay datos disponibles" class="mobile-friendly-table">
+          <v-data-table v-model:search="searchProduct" :items="productos" :headers="headersProducts" :items-per-page-text="'Elementos por página'" no-results-text="No hay datos disponibles" no-data-text="No hay datos disponibles" class="mobile-friendly-table" :loading="loadingProduct" loading-text="Cargando datos...">
             <!-- Aquí van los slots para personalizar las columnas -->
             <template v-slot:item.image_product="{ item }">
               <v-avatar class="mr-5" elevation="3" color="grey lighten-4">
@@ -220,7 +220,7 @@
             <v-text-field v-model="searchPay" density="compact" label="Buscar" prepend-inner-icon="mdi-magnify" variant="solo-filled" flat hide-details single-line class="search-field"></v-text-field>
           </v-card-title>
           <v-divider></v-divider>
-          <v-data-table v-model:search="searchPay" :items="pagos" :headers="headersPay" :items-per-page-text="'Elementos por página'" no-results-text="No hay datos disponibles" no-data-text="No hay datos disponibles" class="mobile-friendly-table">
+          <v-data-table v-model:search="searchPay" :items="pagos" :headers="headersPay" :items-per-page-text="'Elementos por página'" no-results-text="No hay datos disponibles" no-data-text="No hay datos disponibles" class="mobile-friendly-table" :loading="loadingPayCourse" loading-text="Cargando datos...">
             <!-- Aquí van los slots para personalizar las columnas -->
             <template v-slot:item.details="{ item }">
               <v-btn density="comfortable" icon="mdi-eye" color="green" v-if="item.details && item.details !== 'image/default.png'" @click="openModal(item.details)" variant="tonal" elevation="1" class="mr-1 mt-1 mb-1" title="Ver detalles"></v-btn>
@@ -261,6 +261,9 @@ import axios from "axios";
 export default {
   name: 'StudentView',
   data: () => ({
+    loadingCourse: true,
+    loadingProduct: true,
+    loadingPayCourse: true,
     baseUrl: 'https://api2.simplifies.cl/api/images/',
     description_length: 70,
     selectedtab: 'one',
@@ -360,6 +363,9 @@ export default {
       this.dialogPhoto = true; // Abre el modal
     },
     init(code) {
+      this.loadingCourse = true;
+      this.loadingProduct = true;
+      this.loadingPayCourse = true;
       //alert(code);
       axios
         .get('https://api2.simplifies.cl/api/service', {
@@ -395,6 +401,10 @@ export default {
           this.statePay = response.data.status;
           //console.log(this.cursos.length());
           //console.log(this.student)
+        }).finally(()=>{
+          this.loadingCourse = false;
+          this.loadingProduct = false;
+          this.loadingPayCourse = false;
         });
     },
 
