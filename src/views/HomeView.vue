@@ -2,43 +2,43 @@
   <v-row>
   <v-col cols="12">
     <v-carousel
-      class="mt-4"
-      style="background-color: black;"
-      cycle
-      height="100vh"
-      progress="amber-darken-1"
-      @input="handleUpdate"
-      show-arrows="hover"
-      hide-delimiter-background
-    >
-      <!-- Diapositiva 1 -->
-      <v-carousel-item transition="scale-transition" origin="center">
-        <v-img
-          class="carousel-img"
-          transition="scale-transition"
-          src="@/assets/b1.png"
-          gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-        ></v-img>
-      </v-carousel-item>
-
-      <!-- Diapositiva 2 -->
-      <v-carousel-item transition="scale-transition">
-        <v-img
-          class="carousel-img"
-          src="@/assets/b2.png"
-          gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-        ></v-img>
-      </v-carousel-item>
-
-      <!-- Diapositiva 3 -->
-      <v-carousel-item transition="scale-transition">
-        <v-img
-          class="carousel-img"
-          src="@/assets/b3.png"
-          gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-        ></v-img>
-      </v-carousel-item>
-    </v-carousel>
+    class="mt-4 mobile-carousel"
+    style="background-color: black;"
+    cycle
+    height="100vh"
+    progress="amber-darken-1"
+    @input="handleUpdate"
+    show-arrows="hover"
+    hide-delimiter-background
+  >
+    <!-- Diapositiva 1 -->
+    <v-carousel-item transition="scale-transition" origin="center">
+      <v-img
+        class="carousel-img"
+        transition="scale-transition"
+        src="@/assets/b1.png"
+        gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+      ></v-img>
+    </v-carousel-item>
+  
+    <!-- Diapositiva 2 -->
+    <v-carousel-item transition="scale-transition">
+      <v-img
+        class="carousel-img"
+        src="@/assets/b2.png"
+        gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+      ></v-img>
+    </v-carousel-item>
+  
+    <!-- Diapositiva 3 -->
+    <v-carousel-item transition="scale-transition">
+      <v-img
+        class="carousel-img"
+        src="@/assets/b3.png"
+        gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+      ></v-img>
+    </v-carousel-item>
+  </v-carousel>
   </v-col>
 </v-row>
 
@@ -46,7 +46,7 @@
 
   <br><br><br>
 
-  <BranchesHome></BranchesHome><br><br><br>
+  <BranchesHome></BranchesHome><br>
 
   <CallToAction></CallToAction>
 
@@ -239,12 +239,18 @@ export default {
 .carousel-img {
   object-fit: cover;
   width: 100%;
-  height: 100%;
-  margin: 2px;  /* Ajusta esta medida según tus necesidades */
+  height: auto;
+  margin: 20px; /* Ajusta este valor según tus necesidades */
 }
+
+.v-carousel {
+  padding: 20px; /* Ajusta este valor según tus necesidades */
+}
+
 @media (max-width: 600px) {
-  .mobile-carousel {
-    height: 100vh !important; /* Ajusta esta medida según tus necesidades */
+  .v-carousel {
+    height: auto !important;
+    padding: 20px; /* Agrega un poco de padding para crear espacio alrededor del carrusel */
   }
 }
 </style>

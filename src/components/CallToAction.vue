@@ -14,7 +14,7 @@
             productividad y satisfacción del cliente con Simplifies.
           </span>
         </v-card-text>
-        <v-card-actions class="pt-4">
+        <v-card-actions class="pt-2">
    
           <v-btn color="amber-darken-1" prepend-icon="mdi-eye" variant="text" href="https://www.simplifies.cl">Ver más
             

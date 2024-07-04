@@ -47,39 +47,72 @@
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" app temporary>
-      <v-list dense>
-        <v-list-item to="/">
-          <v-list-item-icon><v-icon>mdi-home</v-icon></v-list-item-icon>
-          <v-list-item-title>Inicio</v-list-item-title>
-        </v-list-item>
-        <v-list-item href="https://reservasbh.simplifies.cl">
-          <v-list-item-icon><v-icon>mdi-calendar</v-icon></v-list-item-icon>
-          <v-list-item-title>Reserva</v-list-item-title>
-        </v-list-item>
-        <v-list-item to="/servicios">
-          <v-list-item-icon><v-icon>mdi-format-list-bulleted-triangle</v-icon></v-list-item-icon>
-          <v-list-item-title>Servicios</v-list-item-title>
-        </v-list-item>
-        <v-list-item to="/sobre-nosotros">
-          <v-list-item-icon><v-icon>mdi-account-group</v-icon></v-list-item-icon>
-          <v-list-item-title>Sobre nosotros</v-list-item-title>
-        </v-list-item>
-        <v-list-item to="/sucursales">
-          <v-list-item-icon><v-icon>mdi-store</v-icon></v-list-item-icon>
-          <v-list-item-title>Sucursales</v-list-item-title>
-        </v-list-item>
-        <v-list-item href="#tienda-online">
-          <v-list-item-icon><v-icon>mdi-store</v-icon></v-list-item-icon>
-          <v-list-item-title>Tienda online</v-list-item-title>
-        </v-list-item>
+  <v-list dense>
+    <v-list-item to="/" class="d-flex align-center" prepend-icon="mdi-home">
+      <v-list-item-content class="px-0">
+        <v-list-item-title>Inicio</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
 
-       <!-- Cursos dentro del Drawer -->
-       <v-subheader>Cursos</v-subheader>
-        <v-list-item to="/cursos" v-for="(item, index) in courseData" :key="index" :value="index">
-          <v-list-item-title>{{ item.name }}</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+    <v-list-item href="https://reservasbh.simplifies.cl" class="d-flex align-center" prepend-icon="mdi-calendar">
+      <v-list-item-content class="px-0">
+        <v-list-item-title>Reserva</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-list-item to="/servicios" class="d-flex align-center" prepend-icon="mdi-format-list-bulleted-triangle">
+      <v-list-item-content class="px-0">
+        <v-list-item-title>Servicios</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-list-item to="/sobre-nosotros" class="d-flex align-center" prepend-icon="mdi-account-group">
+      <v-list-item-content class="px-0">
+        <v-list-item-title>Sobre nosotros</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-list-item to="/sucursales" class="d-flex align-center" prepend-icon="mdi-store">
+      <v-list-item-content class="px-0">
+        <v-list-item-title>Sucursales</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-list-item href="#tienda-online" class="d-flex align-center" prepend-icon="mdi-store">
+      <v-list-item-content class="px-0">
+        <v-list-item-title>Tienda online</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+
+  <!-- Cursos dentro del Drawer -->
+  <v-list-item @click="toggleCursos" class="d-flex align-center" prepend-icon="mdi-school">
+  <v-list-item-content class="px-0">
+    <v-list-item-title>Cursos</v-list-item-title>
+  </v-list-item-content>
+  <v-list-item-icon>
+    <v-icon>{{ cursosAbiertos ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+  </v-list-item-icon>
+</v-list-item>
+
+<v-expand-transition>
+  <div v-show="cursosAbiertos">
+    <v-list-item v-for="(item, index) in courseData" :key="index" :value="index" to="/cursos" class="d-flex align-center" prepend-icon="mdi-book-open-page-variant">
+      <v-list-item-content class="px-0">
+        <v-list-item-title>{{ item.name }}</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+  </div>
+</v-expand-transition>
+    <!-- Cursos dentro del Drawer 
+    <v-subheader>Cursos</v-subheader>
+    <v-list-item v-for="(item, index) in courseData" :key="index" :value="index" to="/cursos" class="d-flex align-center" prepend-icon="mdi-book-open-page-variant">
+      <v-list-item-content class="px-0">
+        <v-list-item-title>{{ item.name }}</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>-->
+  </v-list>
+</v-navigation-drawer>
+
 
     <br>
     <br>
@@ -97,6 +130,7 @@ export default {
   name: 'App',
   data: () => ({
     drawer: false,
+    cursosAbiertos: false,
     courseData: [],
     isCoursesOpen: false,
   }),
@@ -109,6 +143,11 @@ export default {
       .then((response) => {
         this.courseData = response.data.courses;
       });
+  },
+  methods: {
+    toggleCursos() {
+      this.cursosAbiertos = !this.cursosAbiertos;
+    },
   },
 };
 </script>

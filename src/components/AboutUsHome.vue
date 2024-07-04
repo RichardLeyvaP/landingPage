@@ -1,7 +1,7 @@
 <template>
-  <v-container class="pt-12">
-    <v-row class="pt-12">
-      <v-col cols="12" class="pt-12" md="1"></v-col>
+  <v-container class="pt-5">
+    <v-row class="pt-5">
+      <v-col cols="12" class="pt-5" md="1"></v-col>
       <v-col cols="12" class="pa-0 ma-0" md="4">
         <v-parallax src="@/assets/silla1.png" ></v-parallax>
       </v-col>
@@ -25,7 +25,7 @@
    </v-btn>
  </v-card-actions>
       </v-col>
-      <v-col cols="12" class="pt-12" md="1"></v-col>
+      <v-col cols="12" class="pt-5" md="1"></v-col>
     </v-row>
   </v-container>
 </template>  
