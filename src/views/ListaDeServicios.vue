@@ -1,5 +1,5 @@
 <template>
-  <v-container class="mb-12">
+  <v-container class="mb-12" fluid>
     <v-row class="mt-12">
       <v-col cols="12">
 
@@ -11,7 +11,7 @@
       <!-- Ejemplo de tarjeta de servicio, repite este bloque para otros servicios -->
       <v-col cols="12" md="4" v-for="service in services" :key="service.name">
 
-        <v-card elevation="10">
+        <v-card elevation="10" class="rounded-lg standard-size">
           <v-row no-gutters>
             <!-- Columna para el icono con fondo amarillo -->
             <v-col cols="4" class="d-flex justify-center align-center" style="background-color: #ffb300;">
@@ -22,7 +22,7 @@
 
             <!-- Columna para el texto -->
             <v-col cols="8">
-              <div class="pa-4">
+              <div class="pa-4 text-center">
                 <p class="text-justify text-subtitle-1 font-weight-bold text-brown-darken-3">{{ service.name }}</p>
                 <p class="text-justify text-subtitle-2 text-brown-darken-1">{{ truncate(service.service_comment) }}</p>
                
@@ -124,3 +124,19 @@ return mensaje;
   }
 };
 </script>
+
+<style>
+.rounded-lg {
+  border-radius: 12px; /* Ajusta el valor según tus necesidades */
+}
+
+.standard-size {
+  width: 500px; /* Ajusta el ancho según tus necesidades */
+  max-width: 100%; /* Asegura que el card sea responsivo */
+  height: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+</style>

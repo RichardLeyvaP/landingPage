@@ -44,19 +44,14 @@
 
   <!---->
 
-  <br><br><br>
-
   <BranchesHome></BranchesHome><br>
 
   <CallToAction></CallToAction>
 
     <AboutUsHome></AboutUsHome>
-<br><br><br><br><br>
-  <MediaHome></MediaHome><br>
-
-
-
-  <WorkWithUs></WorkWithUs><br><br><br>
+<br>
+  <MediaHome></MediaHome>
+  <WorkWithUs></WorkWithUs><br>
 </template>
 <script>
 

@@ -1,5 +1,5 @@
 <template>
-  <v-container class="pt-5">
+  <v-container class="pt-5" fluid>
     <v-row class="pt-5">
       <v-col cols="12" class="pt-5" md="1"></v-col>
       <v-col cols="12" class="pa-0 ma-0" md="4">

@@ -1,7 +1,7 @@
 <template>
 
   
-  <v-container class="pt-12">
+  <v-container class="pt-12" fluid>
     <v-row>
       <v-col cols="12" md="3" v-for="(card, index) in cards" style="padding: 4px;" :key="index">
         <v-card class="mx-auto my-4 hover-card" @mouseover="cardHover(index, true)" @mouseleave="cardHover(index, false)"
@@ -21,8 +21,8 @@
           </v-list-item>
 
           <v-card-text class="font-weight-medium">
-            <v-btn class="v-btn-info-suc" :href="card.location_link" prepend-icon="mdi-map-marker" variant="plain">
-              {{ card.location }}
+            <v-btn class="v-btn-info-suc multiline-btn" :href="card.location_link" prepend-icon="mdi-map-marker" variant="plain">
+              <span class="multiline">{{ card.location }}</span>
             </v-btn>
             <v-btn class="v-btn-info-suc" :href="card.phone_link" prepend-icon="mdi-cellphone" variant="plain">
               {{ card.phone }}
@@ -133,5 +133,15 @@ export default {
   font-size: var(--v-btn-size);
   min-width: 64px;
   /* padding: 0 16px; */
+}
+
+.multiline {
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.multiline-btn {
+  white-space: normal;
+  word-wrap: break-word;
 }
 </style>

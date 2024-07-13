@@ -1,6 +1,6 @@
 <template>
 
-  <v-container>
+  <v-container fluid>
     <v-row>
       <v-col cols="12" md="6" class="">
         <span class="text-h3 font-weight-black text-uppercase text-amber-darken-1">Lleva tu negocio al próximo nivel

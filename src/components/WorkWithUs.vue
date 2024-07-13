@@ -1,5 +1,5 @@
 <template>
-<v-container class="pt-12">
+<v-container class="pt-12" fluid>
     <v-row class="pt-12">
       <v-col cols="12" class="pt-12" md="1"></v-col>
       <v-col cols="12" class="" md="4" style="background-color: #FFB300; padding: 0px;" >
