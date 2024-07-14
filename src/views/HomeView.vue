@@ -2,10 +2,10 @@
   <v-row>
   <v-col cols="12">
     <v-carousel
-    class="mt-4 mobile-carousel"
+    class="mt-0 mobile-carousel"
     style="background-color: black;"
     cycle
-    height="100vh"
+    height="auto"
     progress="amber-darken-1"
     @input="handleUpdate"
     show-arrows="hover"
@@ -44,8 +44,7 @@
 
   <!---->
 
-  <BranchesHome></BranchesHome><br>
-
+  <BranchesHome class="mt-0"></BranchesHome><br>
   <CallToAction></CallToAction>
 
     <AboutUsHome></AboutUsHome>
@@ -76,53 +75,7 @@ export default {
       progress: 0,
       curriculum: null,
       hover: false,
-      cards: [
-        /*{
-          icon: "mdi-school",
-          title: 'Mall La Paloma',
-          subtitle: 'Sucursal',
-          phone: "+56 9 5765 1503",
-          location: 'Volcán Puntiagudo 100',
-          location_link: "https://maps.app.goo.gl/hu86KEcrUAFpr9b37",
-          phone_link: "https://wa.me/56957651503",
-
-          image: 'salon_sillas.jpg', // Asume que esta es la imagen en la carpeta assets
-        },
-        {
-          icon: "mdi-school",
-          title: 'Bosque Mar',
-          subtitle: 'Sucursal',
-          phone: "+56 9 5765 1503",
-          location: 'Volcán Puntiagudo 100',
-          location_link: "https://maps.app.goo.gl/hu86KEcrUAFpr9b37",
-          phone_link: "https://wa.me/56957651503",
-          image: 'salon_sillas.jpg', // Asume que esta es la imagen en la carpeta assets
-
-        },
-        {
-          icon: "mdi-school",
-          title: 'Sucursal 3',
-          subtitle: 'Sucursal',
-          phone: "+56 9 5765 1503",
-          location: 'Volcán Puntiagudo 100',
-          location_link: "https://maps.app.goo.gl/hu86KEcrUAFpr9b37",
-          phone_link: "https://wa.me/56957651503",
-          image: 'salon_sillas.jpg', // Asume que esta es la imagen en la carpeta assets
-
-        },
-        {
-          icon: "mdi-school",
-          title: 'Academia Hernández',
-          subtitle: 'Academia',
-          phone: "+56 9 5765 1503",
-          location: 'Volcán Puntiagudo 100',
-          location_link: "https://maps.app.goo.gl/hu86KEcrUAFpr9b37",
-          phone_link: "https://wa.me/56957651503",
-          image: 'salon_sillas.jpg', // Asume que esta es la imagen en la carpeta assets
-
-        },*/
-
-      ],
+      cards: [],
 
 
     };
@@ -244,7 +197,7 @@ export default {
 
 @media (max-width: 600px) {
   .v-carousel {
-    height: auto !important;
+    height: 100vh !important;
     padding: 20px; /* Agrega un poco de padding para crear espacio alrededor del carrusel */
   }
 }
