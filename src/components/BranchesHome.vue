@@ -21,10 +21,10 @@
           </v-list-item>
 
           <v-card-text class="font-weight-medium">
-            <v-btn class="v-btn-info-suc multiline-btn location-btn" :href="card.location_link" prepend-icon="mdi-map-marker" variant="plain">
+            <v-btn class="v-btn-info-suc multiline-btn" :href="card.location_link" prepend-icon="mdi-map-marker" variant="plain">
               <span class="multiline">{{ card.location }}</span>
             </v-btn>
-            <v-btn class="v-btn-info-suc phone-btn" :href="card.phone_link" prepend-icon="mdi-cellphone" variant="plain">
+            <v-btn class="v-btn-info-suc" :href="card.phone_link" prepend-icon="mdi-cellphone" variant="plain">
               {{ card.phone }}
             </v-btn>
           </v-card-text>
@@ -143,12 +143,5 @@ export default {
 .multiline-btn {
   white-space: normal;
   word-wrap: break-word;
-}
-.location-btn {
-  display: block; /* Hace que el botón ocupe toda la línea */
-}
-
-.phone-btn {
-  display: block; /* Hace que el botón ocupe toda la línea */
 }
 </style>
