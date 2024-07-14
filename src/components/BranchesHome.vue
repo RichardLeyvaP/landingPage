@@ -4,23 +4,21 @@
   <v-container class="pt-12" fluid>
     <v-row>
       <v-col cols="12" md="3" v-for="(card, index) in cards" style="padding: 4px;" :key="index">
-        <v-card class="mx-auto my-4 hover-card" @mouseover="cardHover(index, true)" @mouseleave="cardHover(index, false)"
-          :class="{ 'orange-background': card.hover }" elevation="6">
-          <v-parallax height="250" :src="'https://api2.simplifies.cl/api/images/' + card.image" class="white--text align-end"
-            :class="{ 'image-grow': card.hover }"></v-parallax>
+        <v-card class="mx-auto my-4 hover-card" elevation="6">
+          <v-parallax height="250" :src="'https://api2.simplifies.cl/api/images/' + card.image" class="white--text align-end"></v-parallax>
 
           <v-list-item class="pt-4" two-line>
             <v-list-item-content>
               <v-list-item-subtitle class="text-overline">
                 <v-icon color="deep-orange lighten-2" size="small">{{ card.icon }}</v-icon> {{ card.subtitle }}
               </v-list-item-subtitle>
-              <v-list-item-title class="text-h6 font-weight-bold pt-2 text-brown-darken-4">
+              <v-list-item-title class="text-h4 font-weight-bold pt-2 text-brown-darken-4">
                 {{ card.title }}
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
 
-          <v-card-text class="font-weight-medium">
+          <v-card-text class="font-weight-medium text-h6">
             <v-btn class="v-btn-info-suc multiline-btn" :href="card.location_link" prepend-icon="mdi-map-marker" variant="plain">
               <span class="multiline">{{ card.location }}</span>
             </v-btn>
@@ -33,7 +31,7 @@
           <!-- Acciones de la Tarjeta -->
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn v-if="card.type === 'Branch'" :href="getReservationLink(card.id, card.business_id)" color="brown-darken-4" text>Reservar</v-btn>
+            <v-btn v-if="card.type === 'Branch'" :href="getReservationLink(card.id, card.business_id)" color="brown-darken-4" class="text-h6" text>Reservar</v-btn>
             <v-spacer></v-spacer>
           </v-card-actions>
         </v-card>
@@ -106,12 +104,6 @@ export default {
 /* Añade transiciones suaves al cambiar de color */
 .hover-card {
   transition-duration: 1s
-}
-
-.image-grow {
-  transition: transform 0.8s ease;
-  transform: scale(1.05);
-  /* Aumenta ligeramente el tamaño */
 }
 
 .fade-enter-active,

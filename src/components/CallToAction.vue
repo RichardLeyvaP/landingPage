@@ -1,39 +1,34 @@
 <template>
-
   <v-container fluid>
     <v-row>
-      <v-col cols="12" md="6" class="">
-        <span class="text-h3 font-weight-black text-uppercase text-amber-darken-1">Lleva tu negocio al próximo nivel
-          usando </span>
-        <span class="text-h3 font-weight-black text-uppercase text-brown-darken-4">Simplifies </span> <br><br>
-
+      <v-col cols="12" md="6">
+        <span class="text-h3 font-weight-black text-uppercase text-amber-darken-1">Lleva tu negocio al próximo nivel usando</span>
+        <span class="text-h3 font-weight-black text-uppercase text-brown-darken-4">Simplifies</span><br><br>
+        
         <v-card-text class="text-justify">
-          <span class="pt-12 text-brown-darken-3">
+          <span class="pt-12 text-brown-darken-3 text-h6">
             Simplifies te ofrece todas las herramientas necesarias para gestionar citas, inventario, y personal,
             todo desde una sola aplicación intuitiva. Únete a los cientos de salones que ya están mejorando su
             productividad y satisfacción del cliente con Simplifies.
           </span>
         </v-card-text>
+        
         <v-card-actions class="pt-2">
-   
-          <v-btn color="amber-darken-1" prepend-icon="mdi-eye" variant="text" href="https://www.simplifies.cl">Ver más
-            
-          </v-btn>
+          <v-btn color="amber-darken-1" prepend-icon="mdi-eye" variant="text" href="https://www.simplifies.cl">Ver más</v-btn>
         </v-card-actions>
-
       </v-col>
-      <v-col cols="1" class="overflow-visible"></v-col>
 
-      <v-col cols="5" class="overflow-visible">
+      <v-col cols="1"></v-col>
+
+      <v-col cols="5" class="text-center">
         <transition name="slide">
-          <v-img src="@/assets/phone.png" class="big-image"></v-img>
+          <v-img src="@/assets/phone.png" class="big-image rounded-lg"></v-img>
         </transition>
       </v-col>
     </v-row>
-
   </v-container>
-
 </template>
+
 <script>
 export default {
   name: 'CallToAction'
@@ -46,12 +41,7 @@ export default {
 }
 
 .big-image {
-  width: 220% !;
-  /* Ajusta este valor según necesites */
+  max-width: 100%; /* Ajusta la imagen al ancho máximo del contenedor */
   height: auto;
-  position: relative;
-  left: 50%;
-  /* Ajusta para centrar o posicionar según necesites */
-  transform: translateX(-50%);
 }
 </style>

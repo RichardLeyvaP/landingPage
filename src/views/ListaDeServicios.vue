@@ -23,8 +23,8 @@
             <!-- Columna para el texto -->
             <v-col cols="8">
               <div class="pa-4 text-center">
-                <p class="text-justify text-subtitle-1 font-weight-bold text-brown-darken-3">{{ service.name }}</p>
-                <p class="text-justify text-subtitle-2 text-brown-darken-1">{{ truncate(service.service_comment) }}</p>
+                <p class="text-subtitle-1 font-weight-bold text-brown-darken-3">{{ service.name }}</p>
+                <p class="text-subtitle-2 text-brown-darken-1">{{ truncate(service.service_comment) }}</p>
                
                 <v-chip size="small" color="orange" class="font-weight-bold mt-2" label>
                   <v-icon icon="mdi-currency-usd" start></v-icon>

@@ -4,11 +4,11 @@
       <v-col cols="12" class="pt-12" md="1"></v-col>
       <v-col cols="12" class="" md="4" style="background-color: #FFB300; padding: 0px;" >
         <v-img cover  :width="420" style="padding-bottom: 28%;"
-  aspect-ratio="1/1" src="@/assets/work.png"  ></v-img>
+  aspect-ratio="1/1" src="@/assets/work.png" class="rounded-lg"></v-img>
       </v-col>
       <v-col cols="12 "  class="pt-8" md="6" style="background-color: #FFffff;">
 
-        <v-card-text class="text-justify">
+        <v-card-text class="text-justify text-h6">
           <span class="text-brown-darken-1"> 
             <h2>¡Únete a nuestro equipo!</h2>
           <p>Estamos buscando personas talentosas y apasionadas para unirse a nuestro equipo.</p>

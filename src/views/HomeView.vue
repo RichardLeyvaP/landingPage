@@ -45,11 +45,11 @@
   <!---->
 
   <BranchesHome class="mt-0"></BranchesHome><br>
-  <CallToAction></CallToAction>
+  <CallToAction></CallToAction><br>
 
     <AboutUsHome></AboutUsHome>
-<br>
-  <MediaHome></MediaHome>
+<br><br>
+  <MediaHome></MediaHome><br>
   <WorkWithUs></WorkWithUs><br>
 </template>
 <script>

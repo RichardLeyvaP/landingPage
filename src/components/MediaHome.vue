@@ -2,7 +2,8 @@
 
 <v-parallax
     height="350"
-    src="@/assets/b6.png"
+    src="@/assets/b6.png" 
+    class="rounded-lg"
   >
 
            <v-container>
