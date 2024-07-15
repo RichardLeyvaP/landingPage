@@ -1,11 +1,11 @@
 <template>
 
   
-  <v-container class="pt-12" fluid>
+  <v-container class="pt-12">
     <v-row>
       <v-col cols="12" md="3" v-for="(card, index) in cards" style="padding: 4px;" :key="index">
         <v-card class="mx-auto my-4 hover-card" elevation="6">
-          <v-parallax height="250" :src="'https://api2.simplifies.cl/api/images/' + card.image" class="white--text align-end"></v-parallax>
+          <v-img height="250" :src="'https://api2.simplifies.cl/api/images/' + card.image" class="white--text align-end"></v-img>
 
           <v-list-item class="pt-4" two-line>
             <v-list-item-content>
@@ -19,12 +19,18 @@
           </v-list-item>
 
           <v-card-text class="font-weight-medium text-h6">
-            <v-btn class="v-btn-info-suc multiline-btn" :href="card.location_link" prepend-icon="mdi-map-marker" variant="plain">
-              <span class="multiline">{{ card.location }}</span>
-            </v-btn>
-            <v-btn class="v-btn-info-suc" :href="card.phone_link" prepend-icon="mdi-cellphone" variant="plain">
-              {{ card.phone }}
-            </v-btn>
+            <v-row class="button-row">
+              <v-col cols="12" class="button-col">
+                <v-btn class="v-btn-info-suc multiline-btn" :href="card.location_link" prepend-icon="mdi-map-marker" variant="plain">
+                  <span class="multiline">{{ card.location }}</span>
+                </v-btn>
+              </v-col>
+              <v-col cols="12" class="button-col">
+                <v-btn class="v-btn-info-suc" :href="card.phone_link" prepend-icon="mdi-cellphone" variant="plain">
+                  {{ card.phone }}
+                </v-btn>
+              </v-col>
+            </v-row>
           </v-card-text>
 
           <v-divider class="mx-4 mb-1"></v-divider>
@@ -135,6 +141,12 @@ export default {
 .multiline-btn {
   white-space: normal;
   word-wrap: break-word;
+}
+.button-row {
+  row-gap: 1px; /* Ajusta el espacio entre filas aquí */
+}
+.button-col {
+  margin-bottom: 1px; /* Ajusta el margen inferior aquí */
 }
 @media (max-width: 600px) {
   .v-btn-info-suc {

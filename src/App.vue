@@ -2,7 +2,7 @@
   <v-app style="background-color: #EFEBE9;">
     <v-app-bar app color="grey-darken-4" dark>
       <v-app-bar-nav-icon @click="drawer = !drawer" class="d-md-none"></v-app-bar-nav-icon>
-      <v-toolbar-title>
+      <v-toolbar-title style="max-height: 64px;">
         <v-img src="@/assets/logo.png" contain alt="Logo de la barbería"></v-img>
       </v-toolbar-title>
 
