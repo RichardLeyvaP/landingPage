@@ -8,7 +8,7 @@
       <v-col cols="12" class="d-flex flex-column align-center" md="6" style="background-color: #FFffff;">
         <v-card-text class="text-center">
           <span class="text-h3 font-weight-black text-uppercase text-amber-darken-1">Hernández</span>
-          <span class="text-brown-darken-1 pt-12 pb-12 text-justify text-h6"> 
+          <span class="text-brown-darken-3 pt-12 pb-12 text-justify subtitle-1"> 
             Es un salón pensado para los niños, jóvenes y adultos de la casa que buscan ser atendidos y lucir como un rey. Nuestra temática, adaptada a un reino moderno, permite que vivan dicha experiencia.<br><br> 
             Tenemos servicios de cortesía como café capuchino, chocolate, entre otras bebidas calientes. Además, todos los cortes incluyen lavado de cabello. <br><br> 
             En nuestra barbería tendrás a tu disposición la anfitriona, el barbero, el técnico capilar, el auxiliar de aseo y la cajera, concentrados en brindarte el mejor servicio.

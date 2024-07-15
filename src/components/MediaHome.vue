@@ -1,9 +1,9 @@
 <template>
-    <v-parallax height="350" src="@/assets/b6.png" class="rounded-lg yellow-background">
+    <v-parallax src="@/assets/b6.png" class="rounded-lg yellow-background">
       <v-container>
         <v-row justify="center"> <!-- Centra horizontalmente en todos los tamaños -->
           <v-col cols="12" md="8"> <!-- Utiliza 8 columnas para centrar el video en dispositivos medianos -->
-            <v-responsive>
+            <v-responsive aspect-ratio="16/9">
               <iframe
                 width="100%"
                 height="315"

@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col cols="12" md="6">
-        <span class="headline font-weight-black text-uppercase text-amber-darken-1">Lleva tu negocio al próximo nivel usando</span>
+        <span class="headline font-weight-black text-uppercase text-amber-darken-1">Lleva tu negocio al próximo nivel usando </span>
         <span class="headline font-weight-black text-uppercase text-brown-darken-4">Simplifies</span><br>
         
         <v-card-text class="text-justify">

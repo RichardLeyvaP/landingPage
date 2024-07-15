@@ -48,7 +48,6 @@
   <CallToAction></CallToAction><br>
 
     <AboutUsHome></AboutUsHome>
-<br><br>
   <MediaHome></MediaHome><br>
 </template>
 <script>
