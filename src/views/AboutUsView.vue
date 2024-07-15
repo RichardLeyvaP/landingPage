@@ -41,11 +41,8 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="12" md="6">
-        <v-img src="@/assets/imagen1.jpg" contain class="mb-4 small-img"></v-img>
-      </v-col>
-      <v-col cols="12" md="6">
-        <v-img src="@/assets/imagen2.jpg" contain class="mb-4 small-img"></v-img>
+      <v-col cols="12" md="8" class="text-right">
+        <v-img src="@/assets/imagen3.png" contain class="mb-4 small-img"></v-img>
       </v-col>
     </v-row>
   </v-container>
@@ -64,7 +61,7 @@ export default {
 }
 
 .small-img img {
-  max-height: 300px; /* Ajusta la altura máxima según tus necesidades */
+  max-height: 150px; /* Ajusta la altura máxima según tus necesidades */
   width: 100%; /* Ajusta el ancho al 100% del contenedor */
   object-fit: cover; /* Ajusta la imagen para que cubra su contenedor */
 }
