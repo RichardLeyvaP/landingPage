@@ -183,7 +183,7 @@ export default {
 }
 @media (max-width: 600px) {
   .mobile-carousel {
-    margin-top: 50px; /* Ajusta este valor según tus necesidades */
+    margin-top: 0px; /* Ajusta este valor según tus necesidades */
   }
 }
 </style>
