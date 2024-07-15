@@ -136,4 +136,21 @@ export default {
   white-space: normal;
   word-wrap: break-word;
 }
+@media (max-width: 600px) {
+  .v-btn-info-suc {
+    font-size: 0.75rem;
+    --v-btn-height: 24px;
+  }
+  .text-h6 {
+    font-size: 1rem;
+  }
+  .v-card-text {
+    display: flex;
+    flex-direction: column;
+  }
+  .multiline-btn {
+    max-width: 100%;
+    text-overflow: ellipsis;
+  }
+}
 </style>

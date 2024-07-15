@@ -2,10 +2,10 @@
   <v-row>
   <v-col cols="12">
     <v-carousel
-    class="mt-0 mobile-carousel"
+    class="mobile-carousel"
     style="background-color: black;"
     cycle
-    height="auto"
+    height="100%"
     progress="amber-darken-1"
     @input="handleUpdate"
     show-arrows="hover"
@@ -50,7 +50,6 @@
     <AboutUsHome></AboutUsHome>
 <br><br>
   <MediaHome></MediaHome><br>
-  <WorkWithUs></WorkWithUs><br>
 </template>
 <script>
 
@@ -58,7 +57,6 @@
 import BranchesHome from "../components/BranchesHome.vue"
 import AboutUsHome from "../components/AboutUsHome.vue"
 import CallToAction from "../components/CallToAction.vue"
-import WorkWithUs from "../components/CallToAction.vue"
 import MediaHome from "../components/MediaHome.vue"
 import axios from "axios";
 export default {
@@ -66,7 +64,6 @@ export default {
     BranchesHome,
     AboutUsHome,
     CallToAction,
-    WorkWithUs,
     MediaHome,
 
   },
@@ -184,21 +181,9 @@ export default {
   min-width: 64px;
   /* padding: 0 16px; */
 }
-.carousel-img {
-  object-fit: cover;
-  width: 100%;
-  height: auto;
-  margin: 20px; /* Ajusta este valor según tus necesidades */
-}
-
-.v-carousel {
-  padding: 20px; /* Ajusta este valor según tus necesidades */
-}
-
 @media (max-width: 600px) {
-  .v-carousel {
-    height: 100vh !important;
-    padding: 20px; /* Agrega un poco de padding para crear espacio alrededor del carrusel */
+  .mobile-carousel {
+    margin-top: 50px; /* Ajusta este valor según tus necesidades */
   }
 }
 </style>
