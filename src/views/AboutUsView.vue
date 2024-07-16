@@ -8,7 +8,7 @@
     </v-row>
     <v-row>
       <v-col cols="12" md="12">
-        <p class="text-brown-darken-3 text-justify text-h6">
+        <p class="text-brown-darken-3 text-justify v">
           Hernández es un salón pensado para los niños, jóvenes y adultos de la casa, que buscan
           ser atendidos y lucir como un Rey. Nuestra temática adaptada a un reino moderno,
           permite que vivan dicha experiencia.
@@ -18,20 +18,20 @@
         </p> <br>
 
         <span class="text-h3 font-weight-black text-uppercase text-amber-darken-1">Misión </span>  
-        <p class="text-brown-darken-3 text-justify text-h6">
+        <p class="text-brown-darken-3 text-justify .subtitle-1">
           Lograr el equilibrio entre el precio y la calidad brindando la mejor atención para
           nuestros clientes que podamos ser accesibles para las familias chilenas.
         </p><br>
 
         <span class="text-h3 font-weight-black text-uppercase text-amber-darken-1">Visión </span>  
-        <p class="text-brown-darken-3 text-justify text-h6">
+        <p class="text-brown-darken-3 text-justify .subtitle-1">
           Ser la franquicia de barberías con más sucursales a nivel nacional para poder
           llegar a todos los hogares cambiando su estilo y su autoestima haciéndolos sentir como
           un rey.
         </p><br>
 
         <span class="text-h3 font-weight-black text-uppercase text-amber-darken-1">Historia </span>  
-        <p class="text-brown-darken-3 text-justify text-h6">
+        <p class="text-brown-darken-3 text-justify .subtitle-1">
           Fundada en 2019 por los hermanos Hernández jóvenes emprendedores con un
           deseo ardiente de emprender, fueron en busca de la excelencia educándose con los
           mejores exponentes a nivel nacional e internacional, de esta manera lograron definir su
@@ -60,6 +60,9 @@ export default {
   height: auto; /* Permite que la altura se ajuste automáticamente */
 }
 
+.subtitle-1 {
+  font-size: 1rem; /* Ajusta el tamaño de la fuente para dispositivos móviles */
+}
 .small-img img {
   max-height: 150px; /* Ajusta la altura máxima según tus necesidades */
   width: 100%; /* Ajusta el ancho al 100% del contenedor */

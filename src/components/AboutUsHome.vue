@@ -1,8 +1,7 @@
 <template>
-  <v-container class="pt-5">
-    <v-row class="pt-5">
-      <v-col cols="12" class="pt-5" md="1"></v-col>
-      <v-col cols="12" class="pa-0 ma-0" md="4">
+  <v-container>
+    <v-row >
+      <v-col cols="12" class="pa-0 ma-0" md="6">
         <v-parallax src="@/assets/silla1.png" class="rounded-lg" style="height: 100%; min-height: 400px;"></v-parallax>
       </v-col>
       <v-col cols="12" class="d-flex flex-column align-center" md="6" style="background-color: #FFffff;">
@@ -18,7 +17,7 @@
           <v-btn color="amber-darken-1" prepend-icon="mdi-eye" variant="text" to="/sobre-nosotros">Ver más</v-btn>
         </v-card-actions>
       </v-col>
-      <v-col cols="12" class="pt-5" md="1"></v-col>
+      <v-col cols="12" md="1"></v-col>
     </v-row>
   </v-container>
 </template>
@@ -51,6 +50,9 @@ export default {
   display: block;
   margin-top: 2px; /* Ajusta según sea necesario para escritorio */
 }
+.subtitle-1 {
+  font-size: 1rem; /* Ajusta el tamaño de la fuente para dispositivos móviles */
+}
 @media (max-width: 600px) {
   .text-h3 {
     margin-bottom: 1px; /* Ajusta según sea necesario */
@@ -61,5 +63,8 @@ export default {
   v-card-text {
     padding-top: 1px; /* Ajusta según sea necesario */
   }
+  .subtitle-1 {
+  font-size: 1rem; /* Ajusta el tamaño de la fuente para dispositivos móviles */
+}
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
-    <v-parallax src="@/assets/b6.png" class="rounded-lg yellow-background">
-      <v-container>
-        <v-row justify="center"> <!-- Centra horizontalmente en todos los tamaños -->
-          <v-col cols="12" md="8"> <!-- Utiliza 8 columnas para centrar el video en dispositivos medianos -->
+    <v-container>
+      <v-parallax src="@/assets/b6.png" class="rounded-lg yellow-background d-flex align-center justify-center" height="100%">
+        <v-row justify="center" class="pa-3">
+          <v-col cols="12" md="8">
             <v-responsive aspect-ratio="16/9">
               <iframe
                 width="100%"
@@ -16,8 +16,8 @@
             </v-responsive>
           </v-col>
         </v-row>
-      </v-container>
-    </v-parallax>
+      </v-parallax>
+    </v-container>
   </template>
   
   <script>

@@ -4,15 +4,14 @@
   <v-container class="pt-12">
     <v-row>
       <v-col cols="12" md="3" v-for="(card, index) in cards" style="padding: 4px;" :key="index">
-        <v-card class="mx-auto my-4 hover-card" elevation="6">
-          <v-img height="250" :src="'https://api2.simplifies.cl/api/images/' + card.image" class="white--text align-end"></v-img>
-
-          <v-list-item class="pt-4" two-line>
+        <v-card class="mx-auto my-2 hover-card" elevation="6" tile>
+          <v-img height="200" width="100%" :src="'https://api2.simplifies.cl/api/images/' + card.image"></v-img>
+          <v-list-item class="pt-2" two-line>
             <v-list-item-content>
               <v-list-item-subtitle class="text-overline">
                 <v-icon color="deep-orange lighten-2" size="small">{{ card.icon }}</v-icon> {{ card.subtitle }}
               </v-list-item-subtitle>
-              <v-list-item-title class="text-h4 font-weight-bold pt-2 text-brown-darken-4">
+              <v-list-item-title class="text-h5 font-weight-bold pt-2 text-brown-darken-4">
                 {{ card.title }}
               </v-list-item-title>
             </v-list-item-content>
@@ -163,6 +162,11 @@ export default {
   .multiline-btn {
     max-width: 100%;
     text-overflow: ellipsis;
+  }
+}
+@media (min-width: 1280px) {
+  .v-card {
+    max-width: 350px; /* Ajusta este valor según lo que funcione mejor para tu diseño */
   }
 }
 </style>
