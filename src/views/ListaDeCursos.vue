@@ -103,15 +103,15 @@
       <v-card-text>
         <v-form v-model="valid" enctype="multipart/form-data">
         <v-row>
-    <v-col cols="12" md="6">
+    <v-col cols="12" md="12">
       <v-text-field
         v-model="form.name"
         :rules="nameRules"
-        label="Nombre(s)"
+        label="Nombre(s) y Apellidos"
         required>
       </v-text-field>
     </v-col>
-    <v-col cols="12" md="6">
+    <!--<v-col cols="12" md="6">
       <v-text-field
         v-model="form.surname"
         :rules="surnameRules"
@@ -126,8 +126,8 @@
         label="Segundo Apellido"
         required>
       </v-text-field>
-    </v-col>
-    <v-col cols="12" md="6">
+    </v-col>-->
+    <v-col cols="12" md="12">
       <v-text-field
         v-model="form.email"
         :rules="emailRules"
@@ -136,10 +136,10 @@
         type="email">
       </v-text-field>
     </v-col>
-    <v-col cols="12" md="6">
+    <v-col cols="12" md="12">
       <v-text-field
         v-model="form.phone"
-        :rules="phoneRules"
+        :rules="mobileRules"
         label="Teléfono"
         required>
       </v-text-field>
@@ -224,9 +224,9 @@ export default {
       v => !!v || 'El correo electrónico es requerido',
       v => /.+@.+\..+/.test(v) || 'El correo electrónico debe ser válido',
     ],
-    phoneRules: [
-      v => !!v || 'El teléfono es requerido',
-      v => /^(?:\+?56)?(\s?)(0?9)(\s?)[98765432]\d{7}$/.test(v) || 'Formato no válido. Ej: +56 9 1234 5678',
+    mobileRules: [
+      v => !!v || 'El número de móvil es requerido',
+      v => /^\+569\d{8}$/.test(v) || 'Formato de número móvil inválido. Ejemplo: +56912345678'
     ],
     fileRules: [
       v => !!v || 'El comprobante de transferencia es requerido',

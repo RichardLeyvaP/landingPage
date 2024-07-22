@@ -21,7 +21,7 @@
             <v-col cols="8" class="d-flex flex-column justify-center text-col">
               <div class="pa-4 text-center flex-grow-1">
                 <p class="text-subtitle-1 font-weight-bold text-brown-darken-3">{{ service.name }}</p>
-                <p class="text-subtitle-2 text-brown-darken-1">{{ service.service_comment }}</p>
+                <p class="text-subtitle-2 text-brown-darken-1 text-ellipsis">{{ service.service_comment }}</p>
                 <div class="mt-auto">
                   <v-chip size="small" color="orange" class="font-weight-bold mt-2" label>
                     <v-icon icon="mdi-currency-usd" start></v-icon>
@@ -128,6 +128,14 @@ export default {
 
 .pa-4 {
   padding: 16px; /* Puedes ajustar este valor según tus necesidades */
+}
+.text-multiline-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Número de líneas permitidas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 @media (max-width: 600px) {
   .standard-size {
