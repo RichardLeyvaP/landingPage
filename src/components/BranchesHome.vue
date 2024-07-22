@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col cols="12" md="3" v-for="(card, index) in cards" :key="index">
-        <v-card class="mx-auto my-2 hover-card" elevation="6" tile>
+        <v-card class="mx-auto my-2" elevation="6" tile>
           <v-img height="200" width="100%" :src="'https://api2.simplifies.cl/api/images/' + card.image"></v-img>
 
           <v-list-item class="pt-2" two-line>
@@ -16,8 +16,8 @@
             </v-list-item-content>
           </v-list-item>
 
-          <v-card-text class="font-weight-medium text-h6">
-            <v-row class="button-row">
+        
+            <v-row class="button-row font-weight-medium text-h6">
               <v-col cols="12" class="button-col">
                 <v-btn class="v-btn-info-suc multiline-btn" :href="card.location_link" prepend-icon="mdi-map-marker" variant="plain">
                   <span class="multiline">{{ card.location }}</span>
@@ -29,7 +29,7 @@
                 </v-btn>
               </v-col>
             </v-row>
-          </v-card-text>
+   
 
           <v-divider class="mx-1 mb-1"></v-divider>
 
@@ -70,10 +70,6 @@ export default {
 </script>
 
 <style>
-.hover-card {
-  transition-duration: 0.5s;
-}
-
 .text-overline {
   white-space: nowrap;
 }
@@ -102,7 +98,5 @@ export default {
   }
 }
 /* Ajuste para la imagen */
-.v-img {
-  border-radius: 8px; /* Borde redondeado opcional */
-}
+
 </style>

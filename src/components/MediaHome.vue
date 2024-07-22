@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    <v-container fluid fill-height class="pa-0 ma-0 d-flex align-center justify-center">
       <v-parallax src="@/assets/b6.png" class="rounded-lg yellow-background d-flex align-center justify-center" height="100%">
         <v-row justify="center" class="pa-3">
           <v-col cols="12" md="8">

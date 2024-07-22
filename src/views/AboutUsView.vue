@@ -41,10 +41,12 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="12" md="8" class="text-right">
-        <v-img src="@/assets/imagen3.png" contain class="mb-4 small-img"></v-img>
-      </v-col>
-    </v-row>
+  <v-col cols="12" md="3"></v-col>
+  <v-col cols="12" md="6" class="d-flex justify-center align-center">
+    <v-img src="@/assets/imagen3.png" class="mb-4 small-img"></v-img>
+  </v-col>
+  <v-col cols="12" md="3"></v-col>
+</v-row>
   </v-container>
 </template>
 

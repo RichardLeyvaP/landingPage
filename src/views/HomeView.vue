@@ -10,9 +10,11 @@
     @input="handleUpdate"
     show-arrows="hover"
     hide-delimiter-background
+    transition="slide-x-transition"
+  reverse-transition="slide-x-reverse-transition"
   >
     <!-- Diapositiva 1 -->
-    <v-carousel-item transition="scale-transition" origin="center">
+    <v-carousel-item origin="center">
       <v-img
         class="carousel-img"
         transition="scale-transition"
@@ -22,7 +24,7 @@
     </v-carousel-item>
   
     <!-- Diapositiva 2 -->
-    <v-carousel-item transition="scale-transition">
+    <v-carousel-item>
       <v-img
         class="carousel-img"
         src="@/assets/b2.png"
@@ -31,7 +33,7 @@
     </v-carousel-item>
   
     <!-- Diapositiva 3 -->
-    <v-carousel-item transition="scale-transition">
+    <v-carousel-item>
       <v-img
         class="carousel-img"
         src="@/assets/b3.png"
