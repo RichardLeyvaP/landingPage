@@ -127,7 +127,7 @@ export default {
 }
 
 .pa-4 {
-  padding: 16px; /* Puedes ajustar este valor según tus necesidades */
+  padding: 4px; /* Puedes ajustar este valor según tus necesidades */
 }
 .text-multiline-ellipsis {
   display: -webkit-box;
@@ -136,10 +136,25 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+  height: 3em; /* Ajustar según el tamaño de la fuente para permitir dos líneas */
 }
 @media (max-width: 600px) {
   .standard-size {
     height: 170px; /* Altura en dispositivos móviles */
   }
+
+  .pa-4 {
+    padding: 4px; /* Reduce el padding en dispositivos móviles */
+  }
+
+  .text-multiline-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Número de líneas permitidas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  height: 3em; /* Ajustar según el tamaño de la fuente para permitir dos líneas */
+}
 }
 </style>
