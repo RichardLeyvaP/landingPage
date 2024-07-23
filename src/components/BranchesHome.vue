@@ -3,7 +3,7 @@
     <v-row>
       <v-col cols="12" md="3" v-for="(card, index) in cards" :key="index">
         <v-card class="mx-auto my-2" elevation="6" tile>
-          <v-img height="200" width="100%" :src="'https://api2.simplifies.cl/api/images/' + card.image"></v-img>
+          <v-img height="200" width="100%" :src="'https://api2.simplifies.cl/api/images/' + card.image" cover></v-img>
 
           <v-list-item class="pt-2" two-line>
             <v-list-item-content>
