@@ -7,7 +7,6 @@
       </v-col>
     </v-row>
     <v-row>
-      <!-- Ejemplo de tarjeta de servicio, repite este bloque para otros servicios -->
       <v-col cols="12" md="4" v-for="service in services" :key="service.name">
         <v-card elevation="10" class="rounded-lg standard-size d-flex flex-column">
           <v-row no-gutters class="flex-grow-1">
@@ -21,7 +20,7 @@
             <v-col cols="8" class="d-flex flex-column justify-center text-col">
               <div class="pa-4 text-center flex-grow-1">
                 <p class="text-subtitle-1 font-weight-bold text-brown-darken-3">{{ service.name }}</p>
-                <p class="text-subtitle-2 text-brown-darken-1 text-ellipsis">{{ service.service_comment }}</p>
+                <p class="text-subtitle-2 text-brown-darken-1 text-multiline-ellipsis">{{ service.service_comment }}</p>
                 <div class="mt-auto">
                   <v-chip size="small" color="orange" class="font-weight-bold mt-2" label>
                     <v-icon icon="mdi-currency-usd" start></v-icon>
@@ -129,6 +128,7 @@ export default {
 .pa-4 {
   padding: 4px; /* Puedes ajustar este valor según tus necesidades */
 }
+
 .text-multiline-ellipsis {
   display: -webkit-box;
   -webkit-line-clamp: 2; /* Número de líneas permitidas */
@@ -138,6 +138,7 @@ export default {
   max-width: 100%;
   height: 3em; /* Ajustar según el tamaño de la fuente para permitir dos líneas */
 }
+
 @media (max-width: 600px) {
   .standard-size {
     height: 170px; /* Altura en dispositivos móviles */
@@ -146,15 +147,5 @@ export default {
   .pa-4 {
     padding: 4px; /* Reduce el padding en dispositivos móviles */
   }
-
-  .text-multiline-ellipsis {
-  display: -webkit-box;
-  -webkit-line-clamp: 2; /* Número de líneas permitidas */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
-  height: 3em; /* Ajustar según el tamaño de la fuente para permitir dos líneas */
-}
 }
 </style>
