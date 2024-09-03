@@ -1,5 +1,17 @@
 <template>
+<v-snackbar class="mt-12" location="right top" :timeout="sb_timeout" :color="sb_type"
+       elevation="24"  :multi-line="true"  vertical v-model="snackbar">
+       <v-row>
+         <v-col md="2">
+           <v-avatar :icon="sb_icon" color="sb_type" size="40"></v-avatar>
+         </v-col>
+         <v-col md="10">
+           <h4>{{ sb_title }}</h4>
+           {{ sb_message }}
 
+         </v-col>
+      </v-row>
+     </v-snackbar>
   
   <v-container class="pt-12">
     <v-row>
@@ -35,6 +47,15 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn v-if="card.type === 'Branch'" :href="getReservationLink(card.id, card.business_id)" color="brown-darken-4" class="text-h6" text>Reservar</v-btn>
+            <!-- Botón para compartir el enlace -->
+  <v-btn 
+    v-if="card.type === 'Branch'" 
+    @click="shareLink(card.id, card.business_id)"
+    class="text-h6 text-center" 
+    icon
+  >
+  <v-icon left size="25">mdi-share-variant</v-icon>
+  </v-btn>
             <v-spacer></v-spacer>
           </v-card-actions>
         </v-card>
@@ -57,6 +78,12 @@ export default {
       curriculum: null,
       hover: false,
       cards: [],
+      snackbar: false,
+   sb_type: '',
+   sb_message: '',
+   sb_timeout: 2000,
+   sb_title:'',
+   sb_icon:'',
     };
   },
   methods: {
@@ -67,10 +94,63 @@ export default {
  
     return require('@/assets/' + image  + `?timestamp=${uniqueParam}`)
   },
+  showAlert(sb_type,sb_message, sb_timeout)
+   {    
+     this.sb_type= sb_type
 
-  getReservationLink(cardId, business_id) {
+     if(sb_type=="success")
+     {
+       this.sb_title='Éxito'
+       this.sb_icon='mdi-check-circle'
+     }
+     
+     if(sb_type=="error")
+     {
+       this.sb_title='Error'
+       this.sb_icon='mdi-check-circle'
+     }
+
+     if(sb_type=="warning")
+     {
+       this.sb_title='Advertencia'
+       this.sb_icon='mdi-alert-circle'
+     }      
+
+     this.sb_message= sb_message
+     this.sb_timeout= sb_timeout
+     this.snackbar= true
+   },
+   getReservationLink(cardId, business_id) {
       return `https://reservasbh.simplifies.cl/?id=${cardId}&business=${business_id}`;
     },
+   shareLink(cardId, business_id) {
+    const link = this.getReservationLink(cardId, business_id);
+    if (navigator.share) {
+      navigator.share({
+        title: 'Reservación',
+        text: 'Mira este enlace para hacer una reservación:',
+        url: link,
+      }).then(() => {
+        console.log('Enlace compartido');
+      }).catch((error) => {
+        //console.error('Error al compartir el enlace:', error);
+        this.showAlert("error",'Error al compartir el enlace:', error, 3000);
+      });
+    } else {
+      this.copyToClipboard(link);
+      this.showAlert("success","El enlace ha sido copiado. Comparte el enlace manualmente.", 3000);
+      //alert('El enlace ha sido copiado al portapapeles. Comparte el enlace manualmente.');
+    }
+  },
+  copyToClipboard(link) {
+    navigator.clipboard.writeText(link).then(() => {
+      this.showAlert("success","El enlace ha sido copiado. Comparte el enlace manualmente.", 3000);
+      //console.log('Enlace copiado al portapapeles');
+    }).catch(err => {
+      this.showAlert("error",'Error al compartir el enlace:', err, 3000);
+      //console.error('Error al copiar el enlace: ', err);
+    });
+  },
 
     submitForm() {
       // Aquí puedes manejar la lógica para enviar el formulario
